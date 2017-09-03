@@ -116,6 +116,110 @@ def pascal_triangle(n):
    return n>=1	# return False if its a negative number
 pascal_triangle(6)
 #
+#binary_search
+#
+def binary_search(mylist, element):
+	low = 0
+	high = len(mylist) -1
+	while (low < high):
+		mid= (low+high)//2
+		print(low,high,mid)
+		if (mylist[mid] > element):
+			high=mid-1
+		elif (mylist[mid] < element):
+			low=mid+1
+		else:
+			print("Found %d @ %d index" %(element, mid))
+			return (mid)
+		if low==high:
+			return -1
+	return (-1 )
+#
+# bubbleSort
+def bubbleSort(nlist):
+    for passnum in range(len(nlist)-1,0,-1):
+        for i in range(passnum):
+            if nlist[i]>nlist[i+1]:
+                temp = nlist[i]
+                nlist[i] = nlist[i+1]
+                nlist[i+1] = temp
+
+nlist = [14,46,43,27,57,41,45,21,70]
+bubbleSort(nlist)
+print(nlist)		
+#
+# selectionSort
+#
+def selectionSort(nlist):
+   for fillslot in range(len(nlist)-1,0,-1):
+       maxpos=0
+       for location in range(1,fillslot+1):
+           if nlist[location]>nlist[maxpos]:
+               maxpos = location
+
+       temp = nlist[fillslot]
+       nlist[fillslot] = nlist[maxpos]
+       nlist[maxpos] = temp
+
+nlist = [14,46,43,27,57,41,45,21,70]
+selectionSort(nlist)
+print(nlist)
+#
+# Convert int to string in any base
+#
+def to_string(n,base):
+   conver_tString = "0123456789ABCDEF"
+   if n < base:
+      return conver_tString[n]
+   else:
+      return to_string(n//base,base) + conver_tString[n % base]
+
+print(to_string(2835,16))
+#
+# GCD
+#
+def Recurgcd(a, b):
+	print(a, b)
+	low = min(a, b)
+	high = max(a, b)
+
+	if low == 0:
+		return high
+	elif low == 1:
+		return 1
+	else:
+		return Recurgcd(low, high%low)
+print(Recurgcd(12,24))
+
+#
+# nth fib using recursion
+#
+def fibonacci(n):
+  if n == 1 or n == 2:
+    return 1
+  else:
+    return (fibonacci(n - 1) + (fibonacci(n - 2)))
+
+print(fibonacci(7))
+#
+# insertionSort
+#
+def insertionSort(nlist):
+   for index in range(1,len(nlist)):
+
+     currentvalue = nlist[index]
+     position = index
+
+     while position>0 and nlist[position-1]>currentvalue:
+         nlist[position]=nlist[position-1]
+         position = position-1
+
+     nlist[position]=currentvalue
+
+nlist = [14,46,43,27,57,41,45,21,70]
+insertionSort(nlist)
+print(nlist)
+#
 # pangram
 string="The quick brown fox jumps over the lazy dog"
 string=string.casefold()
@@ -197,8 +301,34 @@ def abc():
     str1= "w3resource"
 
 print(abc.__code__.co_nlocals)
+#
+# Providing runtime formatting length
+#
+from enum import Enum
+class Country(Enum):
+    Afghanistan = 93
+    Albania = 355
+    Algeria = 213
+    Andorra = 376
+    Angola = 244
+    Antarctica = 672
 
+max_len = 0
 
+for data in Country:
+	if len(data.name) > max_len:
+		max_len = len(data.name)
+		
+for data in Country:
+    print('{:{}} = {}'.format(data.name,max_len+12, data.value))
+
+#
+# sort enums based on values
+#
+
+	
+print(sorted([ data.value for data in Country]))
+print(list(map(int, Country))
 
 #
 # Class
