@@ -50,6 +50,24 @@ print(len(list(filter(lambda x: x.isdigit(), data_list))))
 print(len(list(filter(lambda x: x.isalpha(), data_list))))
 #Note: filter returns an object but not an iterable
 
+#
+#### Logic implementations
+#
+# parenthese
+class py_solution:
+   def is_valid_parenthese(self, str1):
+        stack, pchar = [], {"(": ")", "{": "}", "[": "]"}
+        for  in str1:
+            if parenthese in pchar:
+                stack.append(parenthese)
+            elif len(stack) == 0 or pchar[stack.pop()] != parenthese:
+                return False
+        return len(stack) == 0
+
+print(py_solution().is_valid_parenthese("(){}[]"))
+print(py_solution().is_valid_parenthese("()[{)}"))
+print(py_solution().is_valid_parenthese("()"))
+
 # prime numbers
 def isprime(n):
 	for i in range(2,n):
@@ -244,6 +262,23 @@ string_set=set(string)
 alphabets=set([chr(i) for i in range(ord('a'), ord('z')+1)])
 print("Its a pangram") if (string_set.issuperset(alphabets)) else print("Its not a pangram")
 #
+#Combinations of character 
+#
+my_list= [4, 5, 6]
+#my_list=set(my_list)
+
+def subsetsRecur(current, sset):
+	if sset:
+		print(current, sset[1:],")(",current + [sset[0]], sset[1:])
+		#print("> ",current, sset)
+		return subsetsRecur(current, sset[1:]) + subsetsRecur(current + [sset[0]], sset[1:])
+	return [current]
+
+print(my_list)
+print(subsetsRecur([],my_list))
+
+
+#
 # Execute string as code
 #
 mycode = 'print("hello world")'
@@ -329,6 +364,23 @@ for data in Country:
 	
 print(sorted([ data.value for data in Country]))
 print(list(map(int, Country))
+#
+# Queue
+#
+import queue
+q = queue.LifoQueue() 
+q = queue.Queue() #FIFO Q
+#insert items at the head of the queue 
+for x in range(4):
+    q.put(str(x))
+#remove items from the head of the queue 
+while not q.empty():
+    print(q.get(), end=" ")
+print()
+#Notes:
+# list(q.queue) return list with items in Q
+
+
 
 #
 # Class
@@ -346,11 +398,23 @@ var2=student()
 var2.name="SriSitarama"
 print(id(var2.getname()))
 #
+# get the class of object
+#
+mycircle=circle(1)
+print(type(mycircle).__name__)
+
+#
 #if else
 #
 astro_sign = 'Sagittarius' if (day < 22) else 'capricorn'
 ###
 
+#
+# for loop without using iterate variable (i)
+#
+
+for _ in range(5):
+	print("asdasd")
 
 #
 # Difference between .sort and sorted()
@@ -361,3 +425,45 @@ print(mylist)
 mysorted=sorted(mylist) # returns a sorted one
 print(mysorted)
 
+#
+#IMP links
+#
+http://www.w3resource.com/python-exercises/class-exercises/python-class-exercise-1.php
+http://www.w3resource.com/python-exercises/class-exercises/python-class-exercise-2.php
+
+#
+# Arrays:
+#
+
+from array import *
+array_num = array('i', [1,3,5,7,9])
+print([i for i in array_num])
+array_num.append(11)
+print([i for i in array_num])
+array_num.append([12,13,14]) # is not supported will raise "TypeError: an integer is required (got type list)"
+print([i for i in array_num])
+print(array_num.itemsize)   # bytes allocated for each element
+#
+#Numpy
+#
+In [17]: import numpy as np
+    ...: l = [12.23, 13.32, 100, 36.32]
+    ...: print("Original List:",l)
+    ...: a = np.array(l)
+    ...:
+    ...: print("One-dimensional numpy array: ",a)
+    ...:
+    ...:
+Original List: [12.23, 13.32, 100, 36.32]
+One-dimensional numpy array:  [  12.23   13.32  100.     36.32]
+
+In [18]: import numpy as np
+    ...: l = [12.23, 'c',13.32, 100, 36.32]
+    ...: print("Original List:",l)
+    ...: a = np.array(l)
+    ...:
+    ...: print("One-dimensional numpy array: ",a)
+    ...:
+    ...:
+Original List: [12.23, 'c', 13.32, 100, 36.32]
+One-dimensional numpy array:  ['12.23' 'c' '13.32' '100' '36.32']
