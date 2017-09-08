@@ -1,4 +1,4 @@
-"""class school():
+class school():
 	address="Begampet"
 	school_name="Saraswathi"	
 
@@ -41,7 +41,7 @@ print(student1.get_school_addr())
 
 
 exit()
-"""
+
 class school():
 	address="Begampet"
 	school_name="Saraswathi"	
