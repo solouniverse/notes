@@ -1,4 +1,10 @@
 #SrimatreNamaha!
+# Pending list
+try except
+unittest & mock
+study one module.py 100%
+
+
 #
 # range() only takes int as args if you want to give range of char use ord(char) ascii values
 #
@@ -9,8 +15,9 @@ In [3]: print(*[ chr(c) for c in range(ord('a'), ord('z')+1)])
 a b c d e f g h i j k l m n o p q r s t u v w x y z
 
 #
-#for...else
+# for...else
 #
+
 for x in range(1505, 1540):
 	if (x%7==0 and x%5==0):
 		print(x, end=" ")
@@ -431,6 +438,10 @@ print(mysorted)
 http://www.w3resource.com/python-exercises/class-exercises/python-class-exercise-1.php
 http://www.w3resource.com/python-exercises/class-exercises/python-class-exercise-2.php
 
+https://docs.python.org/3/library/2to3.html
+https://docs.python.org/3/library/unittest.mock.html
+https://docs.python.org/3/library/unittest.html
+
 #
 # Arrays:
 #
@@ -467,3 +478,9 @@ In [18]: import numpy as np
     ...:
 Original List: [12.23, 'c', 13.32, 100, 36.32]
 One-dimensional numpy array:  ['12.23' 'c' '13.32' '100' '36.32']
+#
+# scope of variables
+#
+dir() will give you the list of in scope variables:
+globals() will give you a dictionary of global variables
+locals() will give you a dictionary of local variables
