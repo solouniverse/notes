@@ -1,3 +1,33 @@
+my_list=[["Ram",10],["Sita",20],["Sham",30],["Ram",20],["Sita",20],["Sita",30]]
+my_dict={}
+for x in my_list:
+	if x[0] not in my_dict:
+		my_dict[x[0]] = x[1]
+	else:
+		my_dict[x[0]] += x[1]
+		
+print(*my_dict.items())
+
+
+exit()
+#
+# Above logic performance canbe improved by using try/exceptions
+#
+my_list=[["Ram",10],["Sita",20],["Sham",30],["Ram",20],["Sita",20],["Sita",30]]
+my_dict={}
+for x in my_list:
+#	if x[0] in my_dict:
+	try:
+		my_dict[x[0]]=my_dict[x[0]]+x[1]
+#	else:
+	except:
+		my_dict[x[0]]=x[1]
+		print(" hey exception handled !",sys.exc_info())
+
+print(*my_dict.items())
+	
+
+exit()
 import sys
 n=212312
 #partners="123"
