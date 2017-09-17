@@ -3,6 +3,11 @@
  * Ex: i/p tact cao
  * "taco cat", "atco cta"
  * 
+ * Logic: 
+ * 1. In even lengthy palindrom all characters should present in even count only!
+ * 2. In odd lengthy palindrom only one character can be repeated odd times 
+ * 		all others characters should present in even count only!
+ * 
  * */
 
 #include <stdio.h>
@@ -18,7 +23,15 @@
 	#define DEBUG if(0) printf
 #endif
 
-
+/*
+ *> This logic finds out odd repetitions of characters and verifies 2 \
+ * 		conditions mentioned at the top of this program. 
+ *> It doen't care about counting odd occurances of character but keeps 
+ * 		track of those characters. A string not be a palindrome: 
+ *		1. If odd occurances found in a even lenghty string.
+ *		2. If more than 1 characters occured odd times even in a odd lengthy string.
+ */
+ 
 int is_PalindromePermutation_2(char *str)
 {
 	char odd_char='\0';
@@ -75,9 +88,16 @@ int is_PalindromePermutation_2(char *str)
 	return (1);
 }
 
-
+/*
+ * This logic finds out odd repetitions of characters and verifies 2 
+ * conditions mentioned at the top of this program. 
+ * It uses count of odd characters and decides based on it.
+ * Also verifies number of odd characters (If odd characters >1 in an 
+ * 		odd lengthy string it cannot be a palindrome)
+ */
+ 
 int is_PalindromePermutation(char *str)
-{
+{	
 	char odd_char='\0';
 	int i, j, len, odd_count=0, count=0;
 	

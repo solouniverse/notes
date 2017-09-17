@@ -104,6 +104,4 @@ Found a duplicate char (a) @ 53 itreration
 Found a duplicate char (i) @ 56 itreration
 Found a duplicate char (a) @ 61 itreration
 'SriRamJaiRamJaiJaiRam' not a unique string!
-                                                                                               
-
  */
