@@ -15,7 +15,8 @@
  * 	3. Take one character from string1 and find total occurances of it in string1
  * 	4. Count the same with string2.
  * 	5. If they are differ by 1:
- * 		a. Notedown it as 'missing char' if its the first of this kind.
+ * 		a. Notedown it as 'missing char' if its the first of this kind. 
+ * 						(or)
  * 		b. Throw error if it doesnt match with 'missing char' already found.
  *	6. If they are differ by more than 1, throw error and exit.
  * 	7. Repeat steps 1-6 till biggest string ends.
