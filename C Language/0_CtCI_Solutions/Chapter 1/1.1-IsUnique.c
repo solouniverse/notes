@@ -4,6 +4,7 @@
  * characters. What if you cannot use additional datastructes?
  *  
  */
+
 #include <stdio.h>
 #include <string.h>
 
@@ -26,7 +27,6 @@ int determine_if_a_string_2(char *str)
 	}
 	return found_flag;
 }
-
 
 int determine_if_a_string(char *str)
 {
