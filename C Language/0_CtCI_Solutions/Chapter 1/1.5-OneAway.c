@@ -7,7 +7,7 @@
  * 		pale, bake	-> False
  * 
  * Logic: Check the total count of each character from the biggest string 
- * 			in both string if only one the characters are less by 1 char.
+ * 			in both strings if only one the characters are less by 1 char.
  * 			its a True otherwise not.
  * Algorithm:
  *	1. Check the length of both strings if they are only apart by 1 char.
@@ -44,9 +44,9 @@ int main()
 	iCount2=strlen(strString2);
 	
 	/*1. Check the length of both strings if they are only apart by 1 char.*/
-	if( !( (iCount1 == iCount2+1) || (iCount1 == iCount2-1) ) )
+	if( !( (iCount1 == iCount2) || (iCount1 == iCount2+1) || (iCount1 == iCount2-1) ) )
 	{
-		printf("Length is same or difference is beyond 1 character. Cannot be 1 edit away strings.\n");
+		printf("Length difference is beyond 1 character. Cannot be 1 edit away strings.\n");
 		exit(0);
 	}
 	/* 	2. Take the biggest string as string1 2nd one as string2.*/
