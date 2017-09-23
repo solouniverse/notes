@@ -55,10 +55,26 @@ def ArrayPrintAllType(image):
 			print(image[j][N-1-i], end=" ")
 		print()
 
+def ArrayPrintSpiral(array):
+	print("Print Array in spiral:")
+	for i in range(M//2+1):
+		for j in range(i,M-i):
+			print(array[i][j], end = " ")
+
+		for j in range(i+1,M-i):
+			print(array[j][M-i-1], end = " ")
+
+		for j in range(i+1,M-i):
+			print(array[M-i-1][M-1-j], end = " ")
+
+		for j in range(i+1,M-i-1):
+			print(array[M-1-j][i], end = " ")
+	print()
+	
 M=3
 image=[[x for x in range(y,y+M)] for y in [M*z for z in range(M)]]
-ArrayPrintAllType()
-
+#ArrayPrintAllType(image)
+ArrayPrintSpiral(image)
 
 """
 #print(image)
