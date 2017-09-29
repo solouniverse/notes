@@ -6,22 +6,23 @@ class Node(object):
 		self.Link = Link
 		Node.NodeCount+=1
 
-	def get_data(self):
-		return self.data
-
-	def get_next(self):
-		return self.Link
-
-	def set_next(self, new_next):
-		self.Link = new_next
-
 	def ListLinkedList(self):
 		TempNode=self
 		while(TempNode != None):
 			#for x in range(9):	
-			#print("{} @ {}, {}".format(TempNode.data, id(TempNode), id(TempNode.Link)))
-			print(TempNode.data)
+			print("{} @ {}, {}".format(TempNode.data, id(TempNode), id(TempNode.Link)))
+			#print(TempNode.data)
 			TempNode=TempNode.Link
+
+	def ListLinkedListReversed(self):
+		if(self.Link != None):
+			self.Link.ListLinkedListReversed()
+		print(self.data)
+
+	def ListLinkedListRecursive(self):
+		print(self.data)
+		if(self.Link != None):
+			self.Link.ListLinkedListRecursive()
 
 	def CountLinkedList(self):
 		count=0
@@ -91,7 +92,7 @@ class Node(object):
 		else:
 			print("Cannot sort items from None list")
 
-	def SortListHalf(self):
+	def SortListFirstHalf(self):
 		if(None != self):
 			count=0
 			for x in range(self.NodeCount):
@@ -119,10 +120,133 @@ class Node(object):
 		else:
 			print("Cannot sort items from None list")
 
+	def SortListSecondHalf(self):
+		if(None != self):
+			count=0
+			for x in range(self.NodeCount):
+				TempNode=self
+				TempNode2=self
+				itemsChanged=0
+				try:
+					while(TempNode2.Link.Link !=None):						
+						TempNode=TempNode.Link
+						count+=1
+						if(TempNode2.Link.Link !=None):
+							TempNode2=TempNode2.Link.Link
+						else:
+							break
+				except:
+					pass
+					
+				while(TempNode.Link != None):
+					if(TempNode.data > TempNode.Link.data):
+						TempNode.data, TempNode.Link.data=TempNode.Link.data,TempNode.data
+						itemsChanged=1
+					TempNode=TempNode.Link
+												
+					count+=1
+				if(itemsChanged==0):
+					break
+
+			print("Loop repeated %d times" %count)
+		else:
+			print("Cannot sort items from None list")
+
+	def SortListSecondHalf_2(self):
+		if(None != self):
+			count=0
+			for x in range(self.NodeCount):
+				TempNode=self
+				itemsChanged=0
+				for y in range(self.NodeCount//2):
+					TempNode=TempNode.Link
+					count+=1
+					
+				while(TempNode.Link != None):
+					if(TempNode.data > TempNode.Link.data):
+						TempNode.data, TempNode.Link.data=TempNode.Link.data,TempNode.data
+						itemsChanged=1
+					TempNode=TempNode.Link
+												
+					count+=1
+				if(itemsChanged==0):
+					break
+
+			print("Loop repeated %d times" %count)
+		else:
+			print("Cannot sort items from None list")
+
+	def SortListSecondHalf_3(self):
+		if(None != self):
+			count=0
+			TempNode1=self
+			for y in range(self.NodeCount//2):
+				TempNode1=TempNode1.Link
+
+			for x in range(self.NodeCount//2):
+				TempNode=TempNode1
+				itemsChanged=0
+					
+				while(TempNode.Link != None):
+					if(TempNode.data > TempNode.Link.data):
+						TempNode.data, TempNode.Link.data=TempNode.Link.data,TempNode.data
+						itemsChanged=1
+					TempNode=TempNode.Link
+												
+					count+=1
+				if(itemsChanged==0):
+					break
+
+			print("Loop repeated %d times" %count)
+		else:
+			print("Cannot sort items from None list")
+
+	def ListReverse(self, Prev):
+		if(self.Link != None):
+			head=self.Link.ListReverse(self)# All remaining nodes accepts and passes the head new head
+			self.Link=Prev
+			return(head)
+		else:
+			self.Link=Prev
+			return (self) #The last node declares it self as head!
+
+	def ReverseNonRecursive(self):
+		NewHead=None
+		for x in range(self.NodeCount):
+			TempNode=self
+			while(TempNode.Link != None):
+				TempNodePrev=TempNode
+				TempNode = TempNode.Link
+			
+			TempNodePrev.Link=None
+			
+			if(NewHead == None):
+				NewHead=TempNode
+				TempNode2 = NewHead
+			else:
+	#			TempNode2 = NewHead # As this line is added in above if it skips this while loop
+	#			while(TempNode2.Link != None):
+	#				TempNode2 = TempNode2.Link
+				TempNode2.Link=TempNode
+				TempNode2=TempNode2.Link
+
+		return(NewHead)
+
+	def ReverseNonRecursive_2(self):
+		currentNode=self
+		nextNode,prevNode = None,None
+		while(currentNode != None):
+			nextNode = currentNode.Link
+			currentNode.Link = prevNode
+			prevNode = currentNode
+			currentNode = nextNode
+
+		return(prevNode)
+
 	@classmethod
-	def PrepareList(cls):
+	def PrepareList(cls, InputList):
 		cls.head=None
-		for x in range(20,11,-1):
+		for x in InputList:
 			if(cls.head == None):
 				cls.head=Node(x)
 				TempNodePrev=cls.head
@@ -150,8 +274,6 @@ print(head.NodeCount)
 exit()
 """
 
-
-
 """			
 			TempNode=head
 			while(TempNode.Link !=None):
@@ -162,7 +284,24 @@ exit()
 
 """					
 
-head=Node.PrepareList()
+
+head=Node.PrepareList([x for x in range(6,-1,-1)])
+head.ListLinkedList()
+print("---------------------------\n")
+head.SortListSecondHalf_3()
+#head=head.ReverseNonRecursive()
+#head=head.ReverseNonRecursive_2()
+head.ListLinkedList()
+print("---------------------------\n")
+exit()
+head.ListLinkedListReversed()
+print("---------------------------\n")
+head.ListLinkedListRecursive()
+exit()
+#head.SortListHalf()
+head.SortListSecondHalf_2()
+head.ListLinkedList()
+
 head.RemoveNode(15)
 head.RemoveNode()
 print("---------------------------\n")
