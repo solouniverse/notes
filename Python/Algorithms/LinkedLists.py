@@ -243,6 +243,188 @@ class Node(object):
 
 		return(prevNode)
 
+	def PrintMiddleNode(self):
+		if(None != self):
+			TempNode=self
+			TempNode2=self
+
+			try:
+				while(TempNode2.Link.Link !=None):
+					if(TempNode2.Link !=None):
+						TempNode2=TempNode2.Link.Link
+					else:
+						break
+					TempNode=TempNode.Link
+					
+			except:
+				pass
+			
+			print("Value of middle node is: ",TempNode.data)
+			
+		else:
+			print("Cannot find middle item from a 'None' list")
+
+	def PrintMiddleNode_2(self):
+		if(None != self):
+			TempNode=self
+			TempNode2=self
+			count=0
+			while(TempNode2.Link !=None):
+				TempNode2=TempNode2.Link
+				count+=1
+				if(count%2==0):
+					TempNode=TempNode.Link
+			
+			print("Value of middle node is: ",TempNode.data)
+			
+		else:
+			print("Cannot find middle item from a 'None' list")
+
+	def PrintByNthNode(self, N):
+		if(None != self):
+			TempNode=self
+			TempNode2=self
+			count=0
+			while(TempNode2.Link !=None):
+				TempNode2=TempNode2.Link
+				count+=1
+				if(count%N==0):
+					TempNode=TempNode.Link
+			
+			print("Value of middle node is: ",TempNode.data)
+			
+		else:
+			print("Cannot find middle item from a 'None' list")
+
+	def PrintMiddle3rd(self, N):
+	# Using a 2nd counter to find the length of 1/3rd elements.
+		TempNode=self
+		TempNode2=self
+		TempNodeNext=None
+		
+		if(None != self):
+			count=0
+			count2=0
+			while(TempNode2.Link !=None):
+				TempNode2=TempNode2.Link
+				count+=1
+				if(count%N==0):
+					count2+=1
+					TempNode=TempNode.Link
+
+			while(count2):
+				print(TempNode.data)
+				TempNode=TempNode.Link
+				count2-=1
+
+		else:
+			print("Cannot find middle item from a 'None' list")
+
+	def PrintMiddle3rd_2(self, N):
+	#Using count itself
+		TempNode=self
+		TempNode2=self
+		
+		if(None != self):
+			count=0
+			while(TempNode2.Link !=None):
+				TempNode2=TempNode2.Link
+				count+=1
+				if(count%N==0):
+					TempNode=TempNode.Link
+
+			while(count>0):
+				print(TempNode.data)
+				TempNode=TempNode.Link
+				count-=N #It should be reduced by 'N' but not '1'
+
+		else:
+			print("Cannot find middle item from a 'None' list")
+
+	def PrintMiddle3rd_3(self, N):
+	#Using 1/3rd Pointer and 2/3rd pointers
+		TempNode=self
+		TempNode2=self
+		TempNode3=self
+		
+		if(None != self):
+			count=0
+			while(TempNode2.Link !=None):
+				TempNode2=TempNode2.Link
+				count+=1
+				if(count%N==0):
+					TempNode=TempNode.Link
+					TempNode3=TempNode3.Link.Link 
+					
+			while(TempNode != TempNode3):
+				print(TempNode.data)
+				TempNode=TempNode.Link
+
+		else:
+			print("Cannot find middle item from a 'None' list")
+
+	def SplitByNthNode(self, N):
+		TempNode=self
+		TempNode2=self
+		TempNodeNext=None
+		
+		if(None != self):
+			count=0
+			while(TempNode2.Link !=None):
+				TempNode2=TempNode2.Link
+				count+=1
+				if(count%N==0):
+					TempNode=TempNode.Link
+
+			TempNodeNext=TempNode.Link
+			TempNode.Link=None
+		else:
+			print("Cannot find middle item from a 'None' list")
+		return (TempNodeNext)
+
+	def SplitIntoNlists(self, N):
+	#Using a 2nd counter(count2) to find the length of 1/nth elements.
+
+		TempNode=self
+		TempNode2=self
+		TempNodeNext=None
+		headList=[]
+		if(None != self):
+			count=0
+			count2=0
+			headList.append(self)
+			while(TempNode2.Link !=None):
+				TempNode2=TempNode2.Link
+				count+=1
+				if(count%N==0):
+					count2+=1
+					TempNode=TempNode.Link
+			
+			TempNodeNext=TempNode.Link
+			TempNode.Link=None
+			headList.append(TempNodeNext)
+			TempNode=TempNodeNext
+	# Using count2 we are splitting the list into N-1
+	#as we already created first list above
+			for y in range(N-1):			
+				for x in range(count2):
+					if(TempNode == None):
+						break
+					TempNode=TempNode.Link
+					
+				if(TempNode != None):
+					TempNodeNext=TempNode.Link
+					TempNode.Link=None
+					if(TempNodeNext != None):
+						headList.append(TempNodeNext)
+					TempNode=TempNodeNext
+				else:
+					break
+				
+		else:
+			print("Cannot find middle item from a 'None' list")
+		return(headList)
+		
 	@classmethod
 	def PrepareList(cls, InputList):
 		cls.head=None
@@ -256,6 +438,7 @@ class Node(object):
 		
 		return cls.head
 	
+
 """
 head.ListLinkedList()
 print(head.NodeCount)
@@ -274,20 +457,39 @@ print(head.NodeCount)
 exit()
 """
 
-"""			
-			TempNode=head
-			while(TempNode.Link !=None):
-				TempNodePrev=TempNode
-				TempNode=TempNode.Link
-				if(TempNode.data < TempNodePrev.data):
-					TempNode.data, TempNodePrev.data=TempNodePrev.data,TempNode.data
-
-"""					
 
 
-head=Node.PrepareList([x for x in range(6,-1,-1)])
+head=Node.PrepareList([x for x in range(16,0,-1)])
 head.ListLinkedList()
 print("---------------------------\n")
+def getNthNode(self, N):
+	TempNode=self
+	for x in range(N):
+		TempNode=TempNode.Link
+	return (TempNode)
+
+def SplitIntoN_2(self, N, I):
+	
+	TempNode=self
+	print("---------------------------\n")	
+	for y in range(Node.NodeCount):
+		if(y >= I*(Node.NodeCount)//N and y < (I+1)*(Node.NodeCount)//N ):
+			print(TempNode.data)
+		TempNode=TempNode.Link
+
+#SplitIntoN_2(head,4)
+print("---------------------------\n")
+exit()
+#PrintMiddleNode(head)
+#PrintMiddleNode_2(head)
+#PrintByNthNode(head, 3)
+#head2=head.SplitByNthNode( 2)
+#head2.ListLinkedList()
+#heads=head.SplitIntoNlists(8)
+SplitIntoN_2(head,4,1)
+#head.ListLinkedList()
+
+exit()
 head.SortListSecondHalf_3()
 #head=head.ReverseNonRecursive()
 #head=head.ReverseNonRecursive_2()
