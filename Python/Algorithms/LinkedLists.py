@@ -6,6 +6,12 @@ class Node(object):
 		self.Link = Link
 		Node.NodeCount+=1
 
+	def getNthNode(self, N):
+		TempNode=self
+		for x in range(N):
+			TempNode=TempNode.Link
+		return (TempNode)
+
 	def ListLinkedList(self):
 		TempNode=self
 		while(TempNode != None):
@@ -424,7 +430,137 @@ class Node(object):
 		else:
 			print("Cannot find middle item from a 'None' list")
 		return(headList)
+
+	def GetNthNode(self, N):
+		TempNode=self
+		if N == -1: # for Last node
+			while(TempNode.Link != None):
+				TempNode=TempNode.Link
+			return TempNode
+			
+		N-=1
+		while(N and TempNode != None):
+			TempNode=TempNode.Link
+			N-=1
+		if N!=0:
+			return None
+		return TempNode
+
+	def GetPreviousNode(self, CurrentNode):
+		TempNode=self
+		while(TempNode.Link != CurrentNode and TempNode.Link != None):
+			TempNode=TempNode.Link
+
+		if TempNode.Link == CurrentNode:
+			return TempNode
+		return None
+
+	def isListLooped(self):
+		#Start two pointers at 1X & 2X speeds and see it they meet any where
+		TempNode=self
+		TempNode2=self	
 		
+		while(TempNode2.Link != None and TempNode2 != None):
+			if(TempNode2.Link.Link == None):
+				break
+			TempNode2 = TempNode2.Link.Link
+			TempNode = TempNode.Link
+			if(TempNode == TempNode2):
+				return (True)
+				
+		return(False)
+			
+	def CreateLoopAtIndex(self, N):
+		Tempnode=GetNthNode(self, -1) # get last Node
+		Tempnode2=GetNthNode(head, N) # get Nth Node
+		if(Tempnode != None and Tempnode2 != None): #if both of them are valid
+			Tempnode.Link=Tempnode2 # Point last to Nth node
+			return (True)
+		return (False)
+
+	def GetLoopingNode(self):
+		if(self != None):
+			TempNode=self
+			while(TempNode.Link != None):
+				TempNode2=self
+				while(TempNode2 != TempNode):
+					if(TempNode2 == TempNode.Link):
+						return (TempNode2)
+					TempNode2 = TempNode2.Link
+					
+				TempNode = TempNode.Link
+		return (None)
+
+	def FixLoopingNode(self):
+		if(self != None):
+			TempNode=self
+			while(TempNode.Link != None):
+				TempNode2=self
+				while(TempNode2 != TempNode):
+					if(TempNode2 == TempNode.Link):
+						TempNode.Link=None
+						return (TempNode2)
+					TempNode2 = TempNode2.Link
+					
+				TempNode = TempNode.Link
+		return (None)
+
+	def GetNthNodeFromLast(self, N):
+		if(N < 0 or self == None):
+			return (None)
+
+		TempNode=self
+		TempNode2=self
+		count=0
+		while(TempNode!=None):
+			TempNode=TempNode.Link
+			count+=1
+			
+			if(count > N): #Start this traverse delayed by N iterations
+				TempNode2=TempNode2.Link
+
+		if(count < N): #If Total length of List is < N
+			return None
+			
+		return(TempNode2)
+
+	def IsLoopIntersectingWith(self, self2):
+	# Last Node of 2 intersected lists will be same
+		TempNode=self
+		TempNode2=self2
+		while(TempNode.Link != None):
+			TempNode = TempNode.Link
+
+		while(TempNode2.Link != None):
+			TempNode2 = TempNode2.Link
+		
+		return (TempNode2 == TempNode)
+		
+	def FindIntersectionWith(self, self2):
+		TempNode=self
+		while(TempNode != None):
+			TempNode2=self2
+			while(TempNode2 != None):
+				if(TempNode == TempNode2):
+					return TempNode2
+				TempNode2=TempNode2.Link
+			TempNode=TempNode.Link
+			
+		return None
+
+	def FixIntersectionWith(self, self2):
+		TempNode=self
+		while(TempNode != None):
+			TempNode2=self2
+			while(TempNode2 != None):
+				if(TempNode.Link == TempNode2):
+					TempNode.Link=None
+					return True
+				TempNode2=TempNode2.Link
+			TempNode=TempNode.Link
+
+		return False
+
 	@classmethod
 	def PrepareList(cls, InputList):
 		cls.head=None
@@ -459,23 +595,38 @@ exit()
 
 
 
-head=Node.PrepareList([x for x in range(16,0,-1)])
+
+head=Node.PrepareList([x for x in range(6,3,-1)])
 head.ListLinkedList()
 print("---------------------------\n")
-def getNthNode(self, N):
-	TempNode=self
-	for x in range(N):
-		TempNode=TempNode.Link
-	return (TempNode)
 
-def SplitIntoN_2(self, N, I):
-	
-	TempNode=self
-	print("---------------------------\n")	
-	for y in range(Node.NodeCount):
-		if(y >= I*(Node.NodeCount)//N and y < (I+1)*(Node.NodeCount)//N ):
-			print(TempNode.data)
-		TempNode=TempNode.Link
+"""
+Intersection of 2 Lists
+head2=Node.PrepareList([x for x in range(36,32,-1)])
+head2.ListLinkedList()
+print("---------------------------\n")
+#Intersect Two Lists
+TempNode=GetNthNode(head, -1)
+TempNode2=GetNthNode(head2, 2)
+TempNode.Link=TempNode2
+
+head.ListLinkedList()
+print("---------------------------\n")
+head2.ListLinkedList()
+print("---------------------------\n")
+print(FindIntersectionWith(head2, head).data)
+print(FindIntersectionWith(head, head2).data)
+"""
+
+#print(isListLooped(head))
+#if(CreateLoopAtIndex(head, 14)):
+#	print(isListLooped(head))
+#print(GetLoopingNode(head).data)
+
+#Tempnode=GetPreviousNode(head, Tempnode)
+#print(Tempnode.data)
+
+exit()
 
 #SplitIntoN_2(head,4)
 print("---------------------------\n")
