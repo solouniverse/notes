@@ -524,7 +524,7 @@ class Node(object):
 			
 		return(TempNode2)
 
-	def IsLoopIntersectingWith(self, self2):
+	def IsListIntersectingWith(self, self2):
 	# Last Node of 2 intersected lists will be same
 		TempNode=self
 		TempNode2=self2
