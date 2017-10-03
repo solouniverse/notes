@@ -560,6 +560,14 @@ class Node(object):
 			TempNode=TempNode.Link
 
 		return False
+		
+	@staticmethod
+	def DeleteNodeWithoutHeader(NodeToBedeleted):
+		#Copy contents of next node to given node and del next node
+		NextNode=NodeToBedeleted.Link
+		NodeToBedeleted.data = NextNode.data
+		NodeToBedeleted.Link = NextNode.Link
+		del(NextNode)
 
 	@classmethod
 	def PrepareList(cls, InputList):
