@@ -90,3 +90,11 @@ def createAlternateBitMask():
 		mask=5+(mask<<4)
 
 	print(bin(mask))
+
+def isNumberSparse(number):
+#Given a number, check whether it is sparse or not. A number is said to be a sparse number if in binary representation of the number no two or more consecutive bits are set.
+	return(number&(number<<1))
+
+
+
+
