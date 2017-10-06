@@ -1,16 +1,11 @@
 """
+Implement Multiply, Subtraction, Division using only '+'
 * - / only '+'
 
 1. m*n + 
-
-
-
 -
 a-b => a(some operation)b
 """
-
-
-
 def multiply(m,n):
 	Result=0
 	for x in range(n):
@@ -57,6 +52,10 @@ def divide(n,m):
 		result+=m 
 		x=x+1
 	return(x)
+
+#
+# Occuraces of word on large string
+#
 
 def stringOccurances():
 	string="""
@@ -246,6 +245,11 @@ def stringOccurances():
 	cProfile.run("method_1()")
 	cProfile.run("method_2()")
 
+
+
+#
+# Print number in words
+#
 
 Number="199919"
 TenPlus=["Ten","Eleven", "Twelve", "Thirten", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
