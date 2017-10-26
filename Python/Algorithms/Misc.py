@@ -246,34 +246,110 @@ def stringOccurances():
 	cProfile.run("method_2()")
 
 
-
 #
 # Print number in words
 #
+def PrintNumberInWords():
+	Number="199919"
+	TenPlus=["Ten","Eleven", "Twelve", "Thirten", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
+	Tens=["","","Twenty", "Thirty","Fourty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninty"]
+	Positions=["Thousand", "Hunderd","",""]
+	NumberDic={'1':'One', '2':'Two', '3':'Three', '4': 'Four', '5':'Five', '6':'Six', '7':'Seven', '8':'Eight', '9':'Nine'}
+	StrNum=str(Number)
+	len_StrNum=len(StrNum)
 
-Number="199919"
-TenPlus=["Ten","Eleven", "Twelve", "Thirten", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
-Tens=["","","Twenty", "Thirty","Fourty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninty"]
-Positions=["Thousand", "Hunderd","",""]
-NumberDic={'1':'One', '2':'Two', '3':'Three', '4': 'Four', '5':'Five', '6':'Six', '7':'Seven', '8':'Eight', '9':'Nine'}
-StrNum=str(Number)
-len_StrNum=len(StrNum)
-
-for x in range(len_StrNum):
-	#print(NumberDic[x], end=" ")
-	if(StrNum[x] != '0'):
-		if(x == len_StrNum-6):
-			print(NumberDic[StrNum[x]],"Laks", end=" ")
-		elif(x == len_StrNum-5):
-			print(Tens[int(StrNum[x])], end=" ")
-		elif(x == len_StrNum-2):
-			if(StrNum[x] == '1'):
-				if(len_StrNum>2):
-					print("and", end=" ")
-				print(TenPlus[int(StrNum[x+1])], end=" ")
-				break
-			else:
+	for x in range(len_StrNum):
+		#print(NumberDic[x], end=" ")
+		if(StrNum[x] != '0'):
+			if(x == len_StrNum-6):
+				print(NumberDic[StrNum[x]],"Lak", end=" ")
+			elif(x == len_StrNum-5):
 				print(Tens[int(StrNum[x])], end=" ")
-		else:
-			print(NumberDic[StrNum[x]],Positions[-(len_StrNum-x)], end=" ")
+			elif(x == len_StrNum-2):
+				if(StrNum[x] == '1'):
+					if(len_StrNum>2):
+						print("and", end=" ")
+					print(TenPlus[int(StrNum[x+1])], end=" ")
+					break
+				else:
+					print(Tens[int(StrNum[x])], end=" ")
+			else:
+				print(NumberDic[StrNum[x]],Positions[-(len_StrNum-x)], end=" ")
+
+def PrintNumberInWords_2():
+	number=3199
+	number="0101"
+	number=str(number)
+	Tens=["","","Twenty", "Thirty","Fourty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninty"]
+	numbers = ['','One', 'Two', 'Three',  'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+	TenPlus=["Ten","Eleven", "Twelve", "Thirten", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
+
+	if ("0" == number):
+		print("Zero")
+	else:
+		for i in range(len(number)):
+			if("0" == number[i]):
+				continue
+			if(i == len(number) -4):
+				print(numbers[int(number[i])], end=" Thousand ")
+			if(i == len(number) -3):
+				print(numbers[int(number[i])], end=" Hunderd ")
+			if(i == len(number) -2):
+				if("1" == number[i]):
+					print(TenPlus[int(number[i+1])], end=" ")
+					break
+				else:
+					print(Tens[int(number[i])], end=" ")
+			if(i == len(number) -1):
+				print(numbers[int(number[i])], end=" ")
+
+
+
+#
+#
+#
+def temp():
+	list1=[1,67,45,90]
+	list2=[890,56,34,78]
+	distanceDict={}
+	minimum=abs(list1[0]-list2[0])
+	for x in list1:
+		for y in list2:
+			distanceDict[abs(x-y)]=[x,y]
+			if(abs(x-y) < minimum):
+				minimum=abs(x-y)
+
+	print(minimum)
+	print(distanceDict)
+	print(distanceDict[min(distanceDict)])
+
+
+List1=[23,1,45,678,-234]
+List2=[78,596,-1000,0]
+minimum=abs(List1[0]-List2[0])
+minlist=[List1[0], List2[0]]
+for x in List1:
+	for y in List2:
+		if(minimum > abs(x-y)):
+			minimum = abs(x-y)
+			minlist=[x,y]
+
+print(minimum, minlist)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

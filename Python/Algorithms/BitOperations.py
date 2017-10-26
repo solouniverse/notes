@@ -95,6 +95,13 @@ def isNumberSparse(number):
 #Given a number, check whether it is sparse or not. A number is said to be a sparse number if in binary representation of the number no two or more consecutive bits are set.
 	return(number&(number<<1))
 
+def count_number_of_set_bits(n=51):
+	count=0
+	print(bin(n))
+	while(n):
+		n&=(n-1)
+		count+=1
 
+	print(count)
 
-
+count_number_of_set_bits()
