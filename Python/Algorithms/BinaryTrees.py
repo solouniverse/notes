@@ -93,15 +93,42 @@ def PostOrder(root):
 		PostOrder(root.Right)
 		print(root.data)
 
+def SearchTree(root, item):
+	if(root != None):
+		if(root.data == item):
+			#print("Found ", root.data)
+			return True
+#Skip further searching if one of the decendants are matched		
+		if(SearchTree(root.Left, item)):
+			return True
+
+		if(SearchTree(root.Right, item)):
+			return True
+
+def SearchTree2(root, item):
+#This logic doesnt work effectively(Skips right childs) so dont use it***
+	if(root != None):
+		if(root.data == item):
+			#print("Found ", root.data)
+			return True
+#Skip further searching **always**		
+		return(SearchTree2(root.Left, item))
+#This line never gets executed as above line always returns first
+		return(SearchTree2(root.Right, item))
+			
+
 root=TreeNode(0)
 for x in range(1,10):
 	AddNode(root, x)
 
 
 PrintTree(root)
-print("InOrder------------------------------------>>")
-InOrder(root)
-print("PreOrder------------------------------------>>")
-PreOrder(root)
-print("PostOrder------------------------------------>>")
-PostOrder(root)
+
+for x in range(1,15):
+	print(x,SearchTree(root, x))
+#print("InOrder------------------------------------>>")
+#InOrder(root)
+#print("PreOrder------------------------------------>>")
+#PreOrder(root)
+#print("PostOrder------------------------------------>>")
+#PostOrder(root)
