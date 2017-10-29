@@ -186,10 +186,47 @@ def PrintLevelWise(root):
 			if(myQ.Qlength == 0):
 				break
 			myQ.EnQ(None)
-			
-	
 	myQ.DelQ()
 
+def PrintLevelWiseMirrorTree(root):
+	myQ=Queue()
+	myQ.EnQ(root)
+	myQ.EnQ(None)	
+	while(1):
+		temp=myQ.DeQ()
+		if(temp != None):
+			print(temp.data, end=" ")
+			if(temp.Right != None):
+				myQ.EnQ(temp.Right)
+			if(temp.Left != None):
+				myQ.EnQ(temp.Left)
+		else:
+			print()
+			if(myQ.Qlength == 0):
+				break
+			myQ.EnQ(None)
+	myQ.DelQ()
+
+def PrintLevelWiseFullNodes(root):
+	myQ=Queue()
+	myQ.EnQ(root)
+	myQ.EnQ(None)	
+	while(1):
+		temp=myQ.DeQ()
+		if(temp != None):
+			if(temp.Left != None and temp.Right != None):
+				print(temp.data, end=" ")
+			if(temp.Left != None):
+				myQ.EnQ(temp.Left)
+			if(temp.Right != None):
+				myQ.EnQ(temp.Right)
+		else:
+			print()
+			if(myQ.Qlength == 0):
+				break
+			myQ.EnQ(None)
+	myQ.DelQ()
+	
 def PrintSumByLevel(root):
 	if(root == None):
 		return None
@@ -241,7 +278,7 @@ def PrintTreeSumNonRecursive(root):
 
 def PrintTreeSum(root):
 	if(root != None):
-		return(PrintTreeSum(root.Left)+root.data+PrintTreeSum(root.Right))
+		return(PrintTreeSum(root.Left) + root.data + PrintTreeSum(root.Right))
 	return 0
 
 def SeachTreeNonRecursive(root,item):
@@ -290,6 +327,57 @@ def SearchTree2(root, item):
 #This line never gets executed as above line always returns first
 		return(SearchTree2(root.Right, item))
 			
+def FindTreeSizeNonRecursive(root):
+	if(root == None):
+		return 0
+	myQ=Queue()
+	myQ.EnQ(root)
+	myQ.EnQ(None)
+	size=0
+	while(1):
+		temp=myQ.DeQ()
+		if(temp != None):
+			size+=1
+			if(temp.Left != None):
+				myQ.EnQ(temp.Left)
+			if(temp.Right != None):
+				myQ.EnQ(temp.Right)
+		else:
+			if(myQ.Qlength == 0):
+				break
+			myQ.EnQ(None)
+	myQ.DelQ()
+	return size
+
+def FindTreeSize(root):
+	if(root == None):
+		return 0
+	return(1+FindTreeSize(root.Left)+FindTreeSize(root.Right))
+
+def FindTreeFullNodesCount(root):
+	if(root == None):
+		return 0
+		
+	if(root.Left != None and root.Right != None):
+		mysize=1
+	else:
+		mysize=0
+
+	return(mysize+FindTreeFullNodesCount(root.Left)+FindTreeFullNodesCount(root.Right))
+	
+def FindTreeHalfNodesCount(root):
+	if(root == None):
+		return 0
+
+	mysize=0
+		
+	if(root.Left != None or root.Right != None):
+		mysize=1
+	if(root.Left != None and root.Right != None):
+		mysize=0
+		
+	return(mysize+FindTreeHalfNodesCount(root.Left)+FindTreeHalfNodesCount(root.Right))
+
 def FindTreeHeightNonRecursive(root):
 	myQ=Queue()
 	myQ.EnQ(root)
@@ -321,7 +409,7 @@ def FindTreeHeight(root):
 	else:
 		return 0
 
-def FindTreeWidth(root):
+def FindTreeWidthNonRecursive(root):
 	myQ=Queue()
 	myQ.EnQ(root)
 	myQ.EnQ(None)
@@ -345,6 +433,28 @@ def FindTreeWidth(root):
 
 	return(MaxWidth)
 
+def FindDeepestNodeNonRecursive(root):
+	if(root == None):
+		return
+	myQ=Queue()
+	myQ.EnQ(root)
+	myQ.EnQ(None)	
+	while(1):
+		temp=myQ.DeQ()
+		if(temp != None):
+			Prev=temp
+			if(temp.Left != None):
+				myQ.EnQ(temp.Left)
+			if(temp.Right != None):
+				myQ.EnQ(temp.Right)
+		else:
+			if(myQ.Qlength == 0):
+				break
+			myQ.EnQ(None)
+			
+	print("Deepest node: ",Prev.data)
+	myQ.DelQ()
+
 def FindDeepestNode(root, depth):
 	deepestNode=root
 
@@ -363,6 +473,26 @@ def FindDeepestNode(root, depth):
 
 	return (deepestNode, depth)
 
+def FindDeepestNodeV2(root, depth):
+	if(root!=None):
+		if(root.Left != None):
+			[lTempDeepestNode, lTempDepth]=FindDeepestNode(root.Left,  depth+1)
+
+		if(root.Right != None):
+			[rTempDeepestNode, rTempDepth]=FindDeepestNode(root.Right,  depth+1)
+			
+		if (root.Left == None and root.Right == None):
+			return [root, depth]
+		
+		print(root.data, depth)
+			
+		if(lTempDepth >= rTempDepth):
+			return [lTempDeepestNode, lTempDepth]
+		else:
+			return [rTempDeepestNode, rTempDepth]
+	else:
+		return [None, 0]
+	
 def FindTreeMax(root, TreeMax):
 	if(root != None):
 		if(root.data > TreeMax):
@@ -375,22 +505,98 @@ def FindTreeMax(root, TreeMax):
 			TreeMax=temp
 	return(TreeMax)
 
+def DeleteTree(root):
+	if(root != None):
+		DeleteTree(root.Left)
+		DeleteTree(root.Right)
+		del(root)
+
+def DeleteLeafNodes(root):
+	if(root != None):
+		if(root.Left !=None):
+			if(root.Left.Left == None and root.Left.Right == None):
+				del(root.Left)
+				root.Left=None
+		if(root.Right !=None):			
+			if(root.Right.Left == None and root.Right.Right == None):
+				del(root.Right)
+				root.Right=None
+		DeleteLeafNodes(root.Left)
+		DeleteLeafNodes(root.Right)
+
+def CompareTrees(root1, root2):
+	if (root1==None and root2==None):
+		return True
+	if (root1==None or root2==None):
+		return False
+	if (root1.data != root2.data):
+		return False
 	
+	return(CompareTrees(root1.Left, root2.Left) and CompareTrees(root1.Right, root2.Right))
+
+def CompareMirrorTrees(root1, root2):
+	if (root1==None and root2==None):
+		return True
+	if (root1==None or root2==None):
+		return False
+	if (root1.data != root2.data):
+		return False
+	
+	return(CompareMirrorTrees(root1.Left, root2.Right) and CompareMirrorTrees(root1.Right, root2.Left))
+
+def MirrorTree(root):
+	if(root != None):
+		root.Left,root.Right=root.Right,root.Left
+		MirrorTree(root.Left)
+		MirrorTree(root.Right)
+
+def PrintPaths(root, path):
+	if(root != None):
+		path.append(root.data)
+#path is updated in left travesal as path is considered as a global 
+# variable so we are sending a unmodified copy to right section 
+		path1=path.copy()
+		print(root.data," : ",*path)
+		PrintPaths(root.Left, path)
+		PrintPaths(root.Right, path1)
+
+
 root=TreeNode(0)
 for x in range(1,100):
 	AddNode(root, x)
 
+root2=TreeNode(0)
+for x in range(1,36):
+	AddNode(root2, x)
+
 #PrintTree(root)
 PrintLevelWise(root)
+print(FindTreeFullNodesCount(root))
+print(FindTreeHalfNodesCount(root))
+#print(FindTreeSizeNonRecursive(root))
+#print(FindTreeSize(root))
+#DeleteLeafNodes(root)
+#PrintLevelWise(root)
+#PrintPaths(root, [])
+#MirrorTree(root2)
+#PrintLevelWise(root2)
+#print(CompareMirrorTrees(root, root2))
+#print(CompareTrees(root, root2))
+#PrintLevelWiseFullNodes(root)
+#PrintLevelWiseMirrorTree(root)
+#print(FindTreeMax(root, root.data))
+#FindDeepestNodeNonRecursive(root)
+#print(FindDeepestNode(root, 0)[0].data)
+#print(FindDeepestNodeV2(root, 0)[0].data)
 #for x in range(1,15):
 #	print(x, SearchTree(root, x))
 #PrintSumByLevel(root)
 #PrintTreeSumNonRecursive(root)
 #print(PrintTreeSum(root))
 #print(SeachTreeNonRecursive(root, 0,0))
-print("TreeWidth: ",FindTreeWidth(root))
-print("FindTreeHeightNonRecursive: ",FindTreeHeightNonRecursive(root))
-print("FindTreeHeight: ",FindTreeHeight(root))
+#print("TreeWidth: ",FindTreeWidth(root))
+#print("FindTreeHeightNonRecursive: ",FindTreeHeightNonRecursive(root))
+#print("FindTreeHeight: ",FindTreeHeight(root))
 #for x in range(1,15):
 #	print(x,SearchTree(root, x))
 #print("\nInOrderNonRecursive------------------------------------>>")
