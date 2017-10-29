@@ -345,7 +345,37 @@ def FindTreeWidth(root):
 
 	return(MaxWidth)
 
+def FindDeepestNode(root, depth):
+	deepestNode=root
 
+	if(root!=None):
+		if(root.Left != None):
+			[tempDeepestNode, tempDepth]=FindDeepestNode(root.Left,  depth+1)
+			if(tempDepth > depth):
+				deepestNode=root
+				depth=tempDepth
+
+		if(root.Right != None):
+			[tempDeepestNode, tempDepth]=FindDeepestNode(root.Right,  depth+1)
+			if(tempDepth > depth):
+				deepestNode=tempDeepestNode
+				depth=tempDepth
+
+	return (deepestNode, depth)
+
+def FindTreeMax(root, TreeMax):
+	if(root != None):
+		if(root.data > TreeMax):
+			TreeMax=root.data
+		temp=FindTreeMax(root.Left, TreeMax)
+		if(temp > TreeMax):
+			TreeMax=temp
+		temp=FindTreeMax(root.Right, TreeMax)
+		if(temp > TreeMax):
+			TreeMax=temp
+	return(TreeMax)
+
+	
 root=TreeNode(0)
 for x in range(1,100):
 	AddNode(root, x)
