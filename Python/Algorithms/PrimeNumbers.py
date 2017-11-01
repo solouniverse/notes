@@ -204,6 +204,7 @@ print("FindPrimesInRangeV4(%d):-----" %n)
 cProfile.run("FindPrimesInRangeV4(n)")
 
 """
+For n=100001
 FindPrimesInRangeRegular(100001):-----
 count:  455189160
          9596 function calls in 49.023 seconds
@@ -293,4 +294,98 @@ count:  90408
         1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
      9591    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+"""
+
+"""
+For n=1000001
+FindPrimesInRangeRegular(1000001):-----
+count:  37567326592
+         78502 function calls in 5303.480 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1 5303.456 5303.456 5303.479 5303.479 2primes.py:125(FindPrimesInRangeRegular)
+        1    0.001    0.001 5303.480 5303.480 <string>:1(<module>)
+        1    0.000    0.000 5303.480 5303.480 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+    78497    0.023    0.000    0.023    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+FindPrimesInRangeSqrt(1000001):-----
+count:  67819001
+         78502 function calls in 11.439 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1   11.433   11.433   11.438   11.438 2primes.py:142(FindPrimesInRangeSqrt)
+        1    0.001    0.001   11.439   11.439 <string>:1(<module>)
+        1    0.000    0.000   11.439   11.439 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+    78497    0.005    0.000    0.005    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+FindPrimesInRange(1000001):-----
+count:  462137610238
+         921507 function calls in 1342.429 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1  507.140  507.140 1342.429 1342.429 2primes.py:25(FindPrimesInRange)
+        1    0.000    0.000 1342.429 1342.429 <string>:1(<module>)
+        1    0.000    0.000 1342.429 1342.429 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+   921501  835.288    0.001  835.288    0.001 {method 'remove' of 'list' objects}
+
+
+FindPrimesInRangeV2(1000001):-----
+count:  3085786712
+         6 function calls in 497.583 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1  497.583  497.583  497.583  497.583 2primes.py:53(FindPrimesInRangeV2)
+        1    0.000    0.000  497.583  497.583 <string>:1(<module>)
+        1    0.000    0.000  497.583  497.583 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+FindPrimesInRangeV3(1000001):-----
+count:  921502
+         78502 function calls in 272.559 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1  272.546  272.546  272.557  272.557 2primes.py:85(FindPrimesInRangeV3)
+        1    0.002    0.002  272.559  272.559 <string>:1(<module>)
+        1    0.000    0.000  272.559  272.559 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+    78497    0.011    0.000    0.011    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+FindPrimesInRangeV4(1000001):-----
+count:  921502
+         78502 function calls in 1.734 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    1.728    1.728    1.732    1.732 2primes.py:104(FindPrimesInRangeV4)
+        1    0.002    0.002    1.734    1.734 <string>:1(<module>)
+        1    0.000    0.000    1.734    1.734 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+    78497    0.005    0.000    0.005    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
 """
