@@ -19,12 +19,44 @@ def PrimeFactors_1(n):
 #O(n*n*n)
 	factorsList=[]
 	for x in range(n):
-		for y in range(n-1): #Check for factors upto n-1
+		for y in range(n): #Check for factors upto n-1
 			if(x*y==n):
 				if(isPrime(x)):
 					factorsList.append(x)
 				if(isPrime(y)):
 					factorsList.append(y)
+	return factorsList
+	
+def PrimeFactors_2_2(n):
+#O(n*sqrt(n)*sqrt(n))=O(n^2)
+	factorsList=[]
+	for x in range(n):
+		for y in range(n-1):
+			if(x*y==n):
+				if(isPrime_sqrt(x)):
+					factorsList.append(x)
+				if(isPrime_sqrt(y)):
+					factorsList.append(y)
+			if(y*y>=n):
+				break
+
+	return factorsList
+	
+	
+def PrimeFactors_2_3(n):
+#O((n-sqrt(n))*sqrt(n)*sqrt(n))=O(n*n)
+	factorsList=[]
+	for x in range(n):
+		if(x*x>=n): # Check number that are > sqrt(n)
+			for y in range(n-1):
+				if(x*y==n):
+					if(isPrime_sqrt(x)):
+						factorsList.append(x)
+					if(isPrime_sqrt(y)):
+						factorsList.append(y)
+				if(y*y>=n): # Check number that are < sqrt(n)
+					break
+
 	return factorsList
 	
 def PrimeFactors_2(n):
@@ -82,7 +114,6 @@ def PrimeFactors_4(n):
 				factorsList.append(x)
 		if(x*x>=n):
 			break
-				
 
 	return factorsList
 	
