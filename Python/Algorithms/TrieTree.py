@@ -17,12 +17,69 @@ def addWord(root, word):
 def printTrieTree(root):
 	if(root==None):
 		return
-	print("%s (%s), " %(root.data,root.isStringEnd), end="")
+	print("%s-%d, " %(root.data,root.isStringEnd), end="")
+	
 	for i in range(26):
 		printTrieTree(root.links[i])
-	
-def searchWordInTrieTree(root, word):
+
+def deleteWordTrieTree(root, word):
+#True word found and deleted.
+#False word not found.
+#-1
 	if(word == None):
+		return True
+
+	if(root == None):
+		return False
+
+	if(word == ""):
+		for i in range(26):
+			if(root.links[i] != None):
+				root.isStringEnd=0
+				return True
+			else:
+				del (root)
+				return -1
+
+	if(root.links[ord(word[0])-ord('a')] != None ):
+			status = deleteWordTrieTree(root.links[ord(word[1])-ord('a')], word[1:])
+			if(status == -1):
+				root.links[ord(word[1])-ord('a')]=None
+				if(root.isStringEnd):
+					return True
+					
+				for i in range(26):
+					if(root.links[i] != None):
+						return True
+				else:
+					del(root)
+					return -1
+			else:
+				return status
+	else:
+		return False
+
+
+def printWordsTrieTree(root, prevWord):
+	if(root==None):
+		return
+	prevWord=prevWord+root.data
+	if(root.isStringEnd):
+		print(prevWord)
+	for i in range(26):
+		printWordsTrieTree(root.links[i], prevWord)
+
+def countNumberOfWordsTrieTree(root):
+	if(root==None):
+		return 0
+	print("%s-%d, " %(root.data,root.isStringEnd), end="")
+	count=root.isStringEnd
+	for i in range(26):
+		count+=countNumberOfWordsTrieTree(root.links[i])
+	return count
+
+def searchWordInTrieTree(root, word):
+	if(word == None or word == ""):
 		return True
 	if(root == None):
 		return False
@@ -31,7 +88,7 @@ def searchWordInTrieTree(root, word):
 		if(len(word) > 1):
 			return(searchWordInTrieTree(root.links[ord(word[0])-ord('a')], word[1:]))
 		else:
-			if(not root.isStringEnd):
+			if(root.links[ord(word[0])-ord('a')].isStringEnd):
 				return True
 			else:
 				return False
@@ -50,18 +107,28 @@ def printTrieTreeSingle(root):
 	print("")
 
 root=TrieTreeNode('')
+print("abcde")
 addWord(root, "abcde")
-printTrieTree(root)
-print("")
+#printTrieTree(root)
+print("\nxyz")
 addWord(root, "xyz")
-printTrieTree(root)
-print("")
+#printTrieTree(root)
+print("\nabc")
 addWord(root, "abc")
-printTrieTree(root)
-print("")
+#printTrieTree(root)
+print("\naac")
 addWord(root, "aac")
 printTrieTree(root)
 print("")
+print(countNumberOfWordsTrieTree(root))
+
+printWordsTrieTree(root, "")
+print(deleteWordTrieTree(root, "abc"))
+print("")
+printTrieTree(root)
+
+printWordsTrieTree(root, "")
+exit()
 for x in ["aac","a","ab","abc","abcd","abcde"]:
 	print(x,searchWordInTrieTree(root, x))
 
