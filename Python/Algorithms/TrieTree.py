@@ -104,6 +104,7 @@ def getWordsTrieTree(root, prevWord):
 	return [count,myList]
 
 def printPreFixMatchingWordsTrieTree(root, preFix):
+
 	if(root==None):
 		return
 	for _ in preFix:
@@ -117,6 +118,9 @@ def printPreFixMatchingWordsTrieTree(root, preFix):
 	printWordsTrieTree(root, preFix[:-1])
 
 def printMatchingWordsTrieTree(root, pattern, prevWord):
+#See if the traversal of tree matches with the given pattern. Then
+#Print all the words after matching nodes prefixing string upto now
+
 	if(root==None):
 		return 0
 	if(root.data == ""): #Check if its root node
@@ -147,6 +151,8 @@ def printMatchingWordsTrieTree(root, pattern, prevWord):
 	return count
 	
 def getMatchingWordsTrieTree(root, pattern, prevWord):
+#See if the traversal of tree matches with the given pattern. Then
+#Collect all the words after matching nodes and pass them to the caller
 	if(root==None):
 		return [0,[]]
 	if(root.data == ""):#Check if its root node
