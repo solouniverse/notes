@@ -6,6 +6,10 @@ class TrieTreeNode():
 		self.links=[None for x in range(ord('a'), ord('z')+1)]
 
 def addWord(root, word):
+	if(word == "" or word == None):
+		return
+	if(root == None):
+		return
 	tempRoot=root
 	for x in word:
 		if(tempRoot.links[(ord(x)-ord('a'))] == None):
@@ -26,25 +30,32 @@ def deleteWordTrieTree(root, word):
 #True word found and deleted.
 #False word not found.
 #-1
+
 	if(word == None):
 		return True
 
 	if(root == None):
 		return False
 
-	if(word == ""):
+	if(root.data == ""):
+		print("Deleting \"%s\" from the Trie tree.." %word)
+
+	if(word == "" and root.data != ""):
+		if(root.isStringEnd==0):
+			return False
+					
 		for i in range(26):
 			if(root.links[i] != None):
 				root.isStringEnd=0
 				return True
-			else:
-				del (root)
-				return -1
+		else:
+			del (root)
+			return -1
 
 	if(root.links[ord(word[0])-ord('a')] != None ):
-			status = deleteWordTrieTree(root.links[ord(word[1])-ord('a')], word[1:])
+			status = deleteWordTrieTree(root.links[ord(word[0])-ord('a')], word[1:])
 			if(status == -1):
-				root.links[ord(word[1])-ord('a')]=None
+				root.links[ord(word[0])-ord('a')]=None
 				if(root.isStringEnd):
 					return True
 					
@@ -59,23 +70,144 @@ def deleteWordTrieTree(root, word):
 	else:
 		return False
 
-
 def printWordsTrieTree(root, prevWord):
 	if(root==None):
-		return
+		return 0
+
+	count=0
 	prevWord=prevWord+root.data
 	if(root.isStringEnd):
 		print(prevWord)
-	for i in range(26):
-		printWordsTrieTree(root.links[i], prevWord)
+		count+=1
 
-def countNumberOfWordsTrieTree(root):
+	for i in range(26):
+		count+=printWordsTrieTree(root.links[i], prevWord)
+
+	return count
+
+def getWordsTrieTree(root, prevWord):
+	if(root==None):
+		return [0,[]]
+
+	count=0
+	myList=[]
+	prevWord=prevWord+root.data
+	if(root.isStringEnd):
+		myList.append(prevWord)
+		count+=1
+
+	for i in range(26):
+		[tempCount,tempList]=getWordsTrieTree(root.links[i], prevWord)
+		myList.extend(tempList)
+		count+=tempCount
+
+	return [count,myList]
+
+def printPreFixMatchingWordsTrieTree(root, preFix):
+	if(root==None):
+		return
+	for _ in preFix:
+		if(root.links[ord(_)-ord('a')] != None):
+			root=root.links[ord(_)-ord('a')]
+		else:
+			print("No Matching words found!")
+			return False
+	print("Printing matching words:")
+	
+	printWordsTrieTree(root, preFix[:-1])
+
+def printMatchingWordsTrieTree(root, pattern, prevWord):
 	if(root==None):
 		return 0
-	print("%s-%d, " %(root.data,root.isStringEnd), end="")
-	count=root.isStringEnd
+	if(root.data == ""):
+		print("Searching for pattern \"%s\" in the Trie tree.." %pattern)
+
+	count=0
+	prevWord=prevWord+root.data
+	temp=root
+	tempPrevWord=prevWord
+	for _ in pattern:
+		if(temp.links[ord(_)-ord('a')] != None):
+			temp=temp.links[ord(_)-ord('a')]
+			tempPrevWord+=temp.data
+		else:
+			break
+	else:
+		count+=printWordsTrieTree(temp, tempPrevWord[:-1])
+	
 	for i in range(26):
-		count+=countNumberOfWordsTrieTree(root.links[i])
+		count+=printMatchingWordsTrieTree(root.links[i],pattern, prevWord)
+
+	if(root.data == ""):
+		if(count==0):
+			print("No matches found for pattern: \"%s\"" %pattern)
+		else:
+			print("Total matches found for pattern: \"%d\"" %count)
+
+	return count
+	
+def getMatchingWordsTrieTree(root, pattern, prevWord):
+	if(root==None):
+		return [0,[]]
+	if(root.data == ""):
+		print("Searching for pattern \"%s\" in the Trie tree.." %pattern)
+
+	count=0
+	myList=[]
+	prevWord=prevWord+root.data
+	temp=root
+	tempPrevWord=prevWord
+	for _ in pattern:
+		if(temp.links[ord(_)-ord('a')] != None):
+			temp=temp.links[ord(_)-ord('a')]
+			tempPrevWord+=temp.data
+		else:
+			break
+	else:
+		[tempCount,tempList]=getWordsTrieTree(temp, tempPrevWord[:-1])
+		myList.extend(tempList)
+		count+=tempCount		
+	
+	for i in range(26):
+		[tempCount,tempList]=getMatchingWordsTrieTree(root.links[i],pattern, prevWord)
+		myList.extend(tempList)
+		count+=tempCount		
+
+	if(root.data == ""):
+		if(count==0):
+			print("No matches found for pattern: \"%s\"" %pattern)
+		else:
+			print("Total matches found for pattern: \"%d\"" %count)
+
+	return [count,myList]
+	
+def countNumberOfWordsTrieTree(root):
+	if(root==None):
+		return [0,0]
+
+	countWords=root.isStringEnd
+	countNodes=1
+	count=0
+	for i in range(26):
+		[TempNodeC,TempWordC]=countNumberOfWordsTrieTree(root.links[i])
+		countNodes+=TempNodeC
+		countWords+=TempWordC
+
+	if(root.data == ""):
+		print("Total number of words and nodes in tree are: %d %d" %(countWords, countNodes))
+
+	return [countNodes, countWords]
+
+def countNumberOfNodesTrieTree(root):
+	if(root==None):
+		return 0
+	
+	count=1
+	for i in range(26):
+		count+=countNumberOfNodesTrieTree(root.links[i])
+	if(root.data == ""):
+		print("Total number of *nodes* in tree are: %d" %count)
+
 	return count
 
 def searchWordInTrieTree(root, word):
@@ -106,22 +238,69 @@ def printTrieTreeSingle(root):
 				print("%s (%s), " %(tempRoot.data,tempRoot.isStringEnd), end="")
 	print("")
 
-root=TrieTreeNode('')
-print("abcde")
-addWord(root, "abcde")
-#printTrieTree(root)
-print("\nxyz")
-addWord(root, "xyz")
-#printTrieTree(root)
-print("\nabc")
-addWord(root, "abc")
-#printTrieTree(root)
-print("\naac")
-addWord(root, "aac")
-printTrieTree(root)
-print("")
-print(countNumberOfWordsTrieTree(root))
+def testTrieTreeWithDictionary(root):
+	text_file = open("words.txt", "r")
+	words = text_file.read().split('\n')
+	#print(len(words))
+	for _ in words:
+		addWord(root, _)
+	return root
 
+def validateTrieWithDictionary(root):
+	text_file = open("words.txt", "r")
+	words = text_file.read().split('\n')
+	wordsMissing=0
+	for x in words:
+		if(not searchWordInTrieTree(root, x)):
+			print("%s not found!" %x)
+			wordsMissing+=1
+
+	if(wordsMissing):
+		print("%d words are missing" %wordsMissing)
+	else:
+		print("All the words are found in the Trie Tree!")
+
+root=TrieTreeNode('')
+
+print("Building Trie Tree...")
+root=testTrieTreeWithDictionary(root)
+print("...done!")
+#printPreFixMatchingWordsTrieTree(root, "abc")
+#printMatchingWordsTrieTree(root, "cd", "")
+print(getMatchingWordsTrieTree(root, "cd", ""))
+
+exit()
+countNumberOfWordsTrieTree(root)
+
+string="zymotechny,zymotic,zymotically,zymotize"
+
+for _ in string.split(","):
+	deleteWordTrieTree(root, _)
+
+
+countNumberOfWordsTrieTree(root)
+validateTrieWithDictionary(root)
+
+exit()
+
+for x in ["aac","a","ab","abc","abcd","abcde","xyz","pqrs"]:
+	addWord(root, x)
+
+printWordsTrieTree(root, "")
+#print(getWordsTrieTree(root, ""))
+print(getMatchingWordsTrieTree(root, "cd", ""))
+#countNumberOfWordsTrieTree(root)
+#printPreFixMatchingWordsTrieTree(root, "abc")
+#printMatchingWordsTrieTree(root, "cdf", "")
+exit()
+
+print(countNumberOfNodesTrieTree(root))
+print(deleteWordTrieTree(root, "abc"))
+print("")
+printWordsTrieTree(root, "")
+print(countNumberOfWordsTrieTree(root))
+print(countNumberOfNodesTrieTree(root))
+exit()
 printWordsTrieTree(root, "")
 print(deleteWordTrieTree(root, "abc"))
 print("")
@@ -132,23 +311,4 @@ exit()
 for x in ["aac","a","ab","abc","abcd","abcde"]:
 	print(x,searchWordInTrieTree(root, x))
 
-
-
-"""
-abcd 26
-string="ab"
-myTrieTree=TrieTreeNode(string[0])
-TempTrieTree=TrieTreeNode(string[1])
-myTrieTree.links[(ord(string[1])-ord('a'))]=TempTrieTree
-
-[]
-
-none
-
-myTrieTree.data=string[0]
-
-
-self.data==string[0]
-self.links[(ord(string[1])-ord('a'))] != None
-"""
 
