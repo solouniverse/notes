@@ -255,6 +255,7 @@ def testTrieTreeWithDictionary(root):
 def validateTrieWithDictionary(root):
 	text_file = open("words.txt", "r")
 	words = text_file.read().split('\n')
+	text_file.close()
 	wordsMissing=0
 	for x in words:
 		if(not searchWordInTrieTree(root, x)):
@@ -266,14 +267,58 @@ def validateTrieWithDictionary(root):
 	else:
 		print("All the words are found in the Trie Tree!")
 
+def searchNormal(pattern):
+	text_file = open("words.txt", "r")
+	words = text_file.read().split('\n')
+	text_file.close()
+	wordsFound=0
+	for x in words:
+		if(pattern in x):
+			#print(x)
+			wordsFound+=1
+
+	if(wordsFound):
+		print("Words found: %d " %wordsFound)
+	else:
+		print("No matching found in the Trie Tree!")
+		
+def searchDictionary():
+	text_file = open("words.txt", "r")
+	words = text_file.read().split('\n')
+	text_file.close()
+	wordsFound=0
+	for x in words:
+		for x in words:
+			if(pattern in x):
+				#print(x)
+				wordsFound+=1
+
+	if(wordsFound):
+		print("Words found: %d " %wordsFound)
+	else:
+		print("No matching found in the Trie Tree!")
+
+def CompareSearches(root, pattern):
+	import cProfile
+	cProfile.run("searchNormal(pattern)")
+	cProfile.run("validateTrieWithDictionary(root)")
+
 root=TrieTreeNode('')
 
 print("Building Trie Tree...")
 root=testTrieTreeWithDictionary(root)
 print("...done!")
+import cProfile
+pattern="ab"
+cProfile.run("validateTrieWithDictionary(root)")
+cProfile.run("searchDictionary()")
+
+#CompareSearches(root, "ab")
 #printPreFixMatchingWordsTrieTree(root, "abc")
 #printMatchingWordsTrieTree(root, "cd", "")
-print(getMatchingWordsTrieTree(root, "cd", ""))
+#print(getMatchingWordsTrieTree(root, "cd", ""))
+
+
 
 exit()
 countNumberOfWordsTrieTree(root)
@@ -317,4 +362,65 @@ exit()
 for x in ["aac","a","ab","abc","abcd","abcde"]:
 	print(x,searchWordInTrieTree(root, x))
 
+"""
+#Running each word indictionary against it using regular and Trie tree methods
 
+cProfile.run("validateTrieWithDictionary(root)")
+cProfile.run("searchDictionary()")
+
+
+Building Trie Tree...
+...done!
+All the words are found in the Trie Tree!
+         25526169 function calls (21727057 primitive calls) in 7.064 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.009    0.009    7.064    7.064 <string>:1(<module>)
+4254360/455248    5.696    0.000    6.896    0.000 TrieTree.py:219(searchWordInTrieTree)
+        1    0.102    0.102    7.055    7.055 TrieTree.py:255(validateTrieWithDictionary)
+        1    0.000    0.000    0.000    0.000 _bootlocale.py:11(getpreferredencoding)
+        1    0.000    0.000    0.000    0.000 codecs.py:259(__init__)
+        1    0.000    0.000    0.011    0.011 cp1252.py:22(decode)
+        1    0.011    0.011    0.011    0.011 {built-in method _codecs.charmap_decode}
+        1    0.000    0.000    0.000    0.000 {built-in method _locale._getdefaultlocale}
+        1    0.000    0.000    7.064    7.064 {built-in method builtins.exec}
+  4254359    0.255    0.000    0.255    0.000 {built-in method builtins.len}
+ 17017436    0.945    0.000    0.945    0.000 {built-in method builtins.ord}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        1    0.000    0.000    0.000    0.000 {built-in method io.open}
+        1    0.000    0.000    0.000    0.000 {method 'close' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.005    0.005    0.016    0.016 {method 'read' of '_io.TextIOWrapper' objects}
+        1    0.041    0.041    0.041    0.041 {method 'split' of 'str' objects}
+
+
+Words found: 6585617568
+         13 function calls in 12395.065 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.008    0.008 12395.065 12395.065 <string>:1(<module>)
+        1 12395.000 12395.000 12395.056 12395.056 TrieTree.py:284(searchDictionary)
+        1    0.000    0.000    0.000    0.000 _bootlocale.py:11(getpreferredencoding)
+        1    0.000    0.000    0.000    0.000 codecs.py:259(__init__)
+        1    0.000    0.000    0.011    0.011 cp1252.py:22(decode)
+        1    0.011    0.011    0.011    0.011 {built-in method _codecs.charmap_decode}
+        1    0.000    0.000    0.000    0.000 {built-in method _locale._getdefaultlocale}
+        1    0.000    0.000 12395.065 12395.065 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        1    0.000    0.000    0.000    0.000 {built-in method io.open}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.004    0.004    0.016    0.016 {method 'read' of '_io.TextIOWrapper' objects}
+        1    0.041    0.041    0.041    0.041 {method 'split' of 'str' objects}
+
+
+
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+"""
