@@ -29,7 +29,7 @@ def printTrieTree(root):
 def deleteWordTrieTree(root, word):
 #True word found and deleted.
 #False word not found.
-#-1
+#-1 I have deleted my node please check yours.
 
 	if(word == None):
 		return True
@@ -119,7 +119,7 @@ def printPreFixMatchingWordsTrieTree(root, preFix):
 def printMatchingWordsTrieTree(root, pattern, prevWord):
 	if(root==None):
 		return 0
-	if(root.data == ""):
+	if(root.data == ""): #Check if its root node
 		print("Searching for pattern \"%s\" in the Trie tree.." %pattern)
 
 	count=0
@@ -138,7 +138,7 @@ def printMatchingWordsTrieTree(root, pattern, prevWord):
 	for i in range(26):
 		count+=printMatchingWordsTrieTree(root.links[i],pattern, prevWord)
 
-	if(root.data == ""):
+	if(root.data == ""): #Check if its root node
 		if(count==0):
 			print("No matches found for pattern: \"%s\"" %pattern)
 		else:
@@ -149,7 +149,7 @@ def printMatchingWordsTrieTree(root, pattern, prevWord):
 def getMatchingWordsTrieTree(root, pattern, prevWord):
 	if(root==None):
 		return [0,[]]
-	if(root.data == ""):
+	if(root.data == ""):#Check if its root node
 		print("Searching for pattern \"%s\" in the Trie tree.." %pattern)
 
 	count=0
@@ -173,7 +173,7 @@ def getMatchingWordsTrieTree(root, pattern, prevWord):
 		myList.extend(tempList)
 		count+=tempCount		
 
-	if(root.data == ""):
+	if(root.data == ""):#Check if its root node
 		if(count==0):
 			print("No matches found for pattern: \"%s\"" %pattern)
 		else:
@@ -193,7 +193,7 @@ def countNumberOfWordsTrieTree(root):
 		countNodes+=TempNodeC
 		countWords+=TempWordC
 
-	if(root.data == ""):
+	if(root.data == ""):#Check if its root node
 		print("Total number of words and nodes in tree are: %d %d" %(countWords, countNodes))
 
 	return [countNodes, countWords]
@@ -205,7 +205,7 @@ def countNumberOfNodesTrieTree(root):
 	count=1
 	for i in range(26):
 		count+=countNumberOfNodesTrieTree(root.links[i])
-	if(root.data == ""):
+	if(root.data == ""):#Check if its root node
 		print("Total number of *nodes* in tree are: %d" %count)
 
 	return count
