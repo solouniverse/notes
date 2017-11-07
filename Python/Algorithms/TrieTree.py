@@ -363,7 +363,7 @@ for x in ["aac","a","ab","abc","abcd","abcde"]:
 	print(x,searchWordInTrieTree(root, x))
 
 """
-#Running each word indictionary against it using regular and Trie tree methods
+#Searching each word in dictionary against it using regular and Trie tree methods
 
 cProfile.run("validateTrieWithDictionary(root)")
 cProfile.run("searchDictionary()")
@@ -418,9 +418,4 @@ Words found: 6585617568
 
 
 
-
-------------------
-(program exited with code: 0)
-
-Press any key to continue . . .
 """
