@@ -6,7 +6,7 @@
 
 struct dynamic_array{
 	int *ipDA;
-	int size; //number of items
+	int size; //number of items it has now
 	int capacity; //number of items it can hold
 };
 
