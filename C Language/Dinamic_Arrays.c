@@ -14,7 +14,7 @@ void display_DA(struct dynamic_array *);
 
 int array_example(void)
 {
-	int a[]={123,121,234,1,2,3,11,22,33};
+	int a[9]={123,121,234,1,2,3,11,22,33};
 	int *p;
 	//p=&a[0];
 	p=a;
@@ -204,11 +204,15 @@ void main(void){
 	
 	myDA=create_DA(INIT_DA_SIZE);
 	
-	for(int i=0; i<20;i++){
+	for(int i=0; i<21;i++){
 		push_DA(myDA,i*11);
 	}
 	
 	display_DA(myDA);
+	for(int i=myDA->size; i>1;i--){
+		delete(myDA,1);
+	}
+	return;
 	printf("%d\n",find(myDA,36));
 	printf("%d \n",myDA->size);
 	printf("%d\n",remove_item(myDA,44));
