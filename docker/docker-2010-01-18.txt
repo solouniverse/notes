@@ -1,0 +1,1298 @@
+     ┌────────────────────────────────────────────────────────────────────┐
+     │                        • MobaXterm 11.1 •                          │
+     │             Windows Subsystem for Linux (WSL) session              │
+     │                                                                    │
+     │ ➤ Linux distribution: Ubuntu                                       │
+     │ ➤ Windows drives are mounted into /mnt path                        │
+     │ ➤ Your DISPLAY is set to 172.27.122.145:0.0                        │
+     │ ➤ For more info, ctrl+click on help or visit our website           │
+     └────────────────────────────────────────────────────────────────────┘
+
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$ ssh root@192.168.0.180
+copy key to host? :
+skipping ssh-key copy
+Warning: Permanently added '192.168.0.180' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-45-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sat Jan 18 21:32:40 PST 2020
+
+  System load:  1.5                Processes:              133
+  Usage of /:   22.0% of 30.45GB   Users logged in:        0
+  Memory usage: 57%                IP address for eth0:    192.168.0.180
+  Swap usage:   0%                 IP address for docker0: 172.17.0.1
+
+ * Kata Containers are now fully integrated in Charmed Kubernetes 1.16!
+   Yes, charms take the Krazy out of K8s Kata Kluster Konstruction.
+
+     https://ubuntu.com/kubernetes/docs/release-notes
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+203 packages can be updated.
+100 updates are security updates.
+
+
+Last login: Fri Oct 11 14:44:21 2019
+root@LinuxVM-0:~# docker ps
+CONTAINER ID        IMAGE                                                     COMMAND                  CREATED             STATUS
+daa5ec2dfac5        datadog/agent                                             "/init"                  2 months ago        Up 41 seconds (health: starting)
+8f7311c5e85a        dockerinternal.azurecr.io/airflow_vscode_dev_env:latest   "docker-entrypoint.sh"   3 months ago        Up 41 seconds
+root@LinuxVM-0:~# docker images
+REPOSITORY                                         TAG                 IMAGE ID            CREATED             SIZE
+datadog/agent                                      latest              e5e75c8829c9        2 months ago        419MB
+busybox                                            latest              020584afccce        2 months ago        1.22MB
+dockerinternal.azurecr.io/sshserver                2019_10_08          5cbd6979c6c6        3 months ago        201MB
+dockerinternal.azurecr.io/sshserver                <none>              aaa591179572        3 months ago        201MB
+eg_sshd                                            latest              90ba59855726        3 months ago        201MB
+<none>                                             <none>              3c7c3ed506c8        3 months ago        201MB
+<none>                                             <none>              270a44ab3f6f        3 months ago        201MB
+<none>                                             <none>              5d36a202966c        3 months ago        201MB
+<none>                                             <none>              139579c9e535        3 months ago        201MB
+dockerinternal.azurecr.io/sshserver                <none>              84ea01767804        3 months ago        201MB
+dockerinternal.azurecr.io/sshserver                <none>              61a78e573fa9        3 months ago        201MB
+dockerinternal.azurecr.io/sshserver                <none>              e335c98452af        3 months ago        201MB
+dockerinternal.azurecr.io/sshserver                <none>              da49c75b50fe        3 months ago        201MB
+dockerinternal.azurecr.io/sshserver                <none>              07087262532e        3 months ago        201MB
+dockerinternal.azurecr.io/sshserver                <none>              b3a682e31400        3 months ago        201MB
+<none>                                             <none>              b1d935bdba65        3 months ago        201MB
+dockerinternal.azurecr.io/airflow_vscode_dev_env   latest              5950c235240a        3 months ago        937MB
+ubuntu                                             16.04               657d80a6401d        4 months ago        121MB
+outcoldman/splunk                                  latest              0d73e7276b50        3 years ago         605MB
+outcoldman/splunk                                  6.2-light           84dee8577463        3 years ago         487MB
+root@LinuxVM-0:~#
+root@LinuxVM-0:~# docker images
+REPOSITORY                                         TAG                 IMAGE ID            CREATED             SIZE
+datadog/agent                                      latest              e5e75c8829c9        2 months ago        419MB
+busybox                                            latest              020584afccce        2 months ago        1.22MB
+dockerinternal.azurecr.io/sshserver                2019_10_08          5cbd6979c6c6        3 months ago        201MB
+dockerinternal.azurecr.io/sshserver                <none>              aaa591179572        3 months ago        201MB
+eg_sshd                                            latest              90ba59855726        3 months ago        201MB
+<none>                                             <none>              3c7c3ed506c8        3 months ago        201MB
+<none>                                             <none>              270a44ab3f6f        3 months ago        201MB
+<none>                                             <none>              5d36a202966c        3 months ago        201MB
+<none>                                             <none>              139579c9e535        3 months ago        201MB
+dockerinternal.azurecr.io/sshserver                <none>              84ea01767804        3 months ago        201MB
+dockerinternal.azurecr.io/sshserver                <none>              61a78e573fa9        3 months ago        201MB
+dockerinternal.azurecr.io/sshserver                <none>              e335c98452af        3 months ago        201MB
+dockerinternal.azurecr.io/sshserver                <none>              da49c75b50fe        3 months ago        201MB
+dockerinternal.azurecr.io/sshserver                <none>              07087262532e        3 months ago        201MB
+dockerinternal.azurecr.io/sshserver                <none>              b3a682e31400        3 months ago        201MB
+<none>                                             <none>              b1d935bdba65        3 months ago        201MB
+dockerinternal.azurecr.io/airflow_vscode_dev_env   latest              5950c235240a        3 months ago        937MB
+ubuntu                                             16.04               657d80a6401d        4 months ago        121MB
+outcoldman/splunk                                  latest              0d73e7276b50        3 years ago         605MB
+outcoldman/splunk                                  6.2-light           84dee8577463        3 years ago         487MB
+root@LinuxVM-0:~# docker images ^C
+root@LinuxVM-0:~# docker stop $(docker ps -a -q);docker rm $(docker ps -a -q)
+daa5ec2dfac5
+8f7311c5e85a
+daa5ec2dfac5
+8f7311c5e85a
+root@LinuxVM-0:~# docker rmi $(docker images -a -q ) --force
+Untagged: datadog/agent:latest
+Untagged: datadog/agent@sha256:f17791bccdbf7135467a52c594d6315217e2e11b78f79c909b6fe3240e47a523
+Deleted: sha256:e5e75c8829c9379bc7546b7001026b5740fcfda7783dcaab0762c8a64348bbc8
+Deleted: sha256:344e93097f13f449cd8666becc96b4a09e296df762d2039bf1e1ed84378c6119
+Deleted: sha256:3cd3b9452ef80c7c418c1a0a013542c927d20e860e6bb0f20c8ea5ab22bec9a4
+Deleted: sha256:3ed85fd761087ad0f23e0742868be7807f4132165f0e5d233523fc762bccdea2
+Deleted: sha256:8b9cf1d51d690dfaa115654394a608a86aeb317ac760f7ac82c23afc4ed1eedc
+Deleted: sha256:6901ec24e33f066b377f923bc14338f4f4315f40af279a5de584aba6644477b6
+Deleted: sha256:346f2e553d1d44603ce5382361f9dc580465c90c39534181c25e71ce93af5b99
+Deleted: sha256:61e959729f32b4fd1681ba78f71571cce189868293d4d9c484ccf893759fed9f
+Deleted: sha256:7d786d5df14f9db0b3c7e669fd4bf38798a0b02cf8ef051003cb8a8c9a7974e3
+Deleted: sha256:c638c85211f7541318b6e2e5b112451de2fe36494eb0f53cfdb6e510eb2274a2
+Deleted: sha256:b67d19e65ef653823ed62a5835399c610a40e8205c16f839c5cc567954fcf594
+Untagged: busybox:latest
+Untagged: busybox@sha256:1303dbf110c57f3edf68d9f5a16c082ec06c4cf7604831669faf2c712260b5a0
+Deleted: sha256:020584afccce44678ec82676db80f68d50ea5c766b6e9d9601f7b5fc86dfb96d
+Deleted: sha256:1da8e4c8d30765bea127dc2f11a17bc723b59480f4ab5292edb00eb8eb1d96b1
+Untagged: dockerinternal.azurecr.io/sshserver:2019_10_08
+Untagged: dockerinternal.azurecr.io/sshserver@sha256:4f75522b1ee0812c00986dfa0c7ffcb858ba322492645ab638236d518e32de8c
+Deleted: sha256:5cbd6979c6c61e6b75e8076a7766831ba4f74ac19acf9f3c34803d660bb5f701
+Deleted: sha256:cc4de9014bc182b0d1d09a228f1bf120aa9c6985324ce5aea3121b4340be7e83
+Deleted: sha256:900ada6314e5244b5a5580c5b5fdcca681a9ce6125a1dcf6aa6c56e4dfa397a4
+Untagged: dockerinternal.azurecr.io/sshserver@sha256:3bc7292f532f3d574fd575ba5c2039f64bedad0322b23206716d5c0257d45007
+Deleted: sha256:aaa591179572937842f743bce5939b4771814f74b31216897ce8536868c7490b
+Deleted: sha256:07dfdc955c4052b66eaf78f54cd9efaebf3ba4bf1666eb2877577c7446bc47d9
+Deleted: sha256:a82c301410317ead9734d845fa1ef438fd110b2bae57be0e2646196873be0adb
+Untagged: eg_sshd:latest
+Deleted: sha256:90ba59855726a0e6082c0414bd239768b3a86e8f96360dfd60975de50409a613
+Deleted: sha256:063358856105f1bf075e481731ca5ffdbad575b9a36121fe45db9af3715501ed
+Deleted: sha256:0dee1c624b6fda086730250f7b3b40c38627f9eef9d2ab7fed75aff44e1f57af
+Deleted: sha256:500e488935da1f7da02d63124af16bc7c14ec3a9b3bc2112cba97f9679225d01
+Deleted: sha256:18d24397d34b3d94fe5e3680ed81a4151f05ad29cc92705076263ffe31e9a058
+Deleted: sha256:3c7c3ed506c8592202299d0afe8523c6ca2bb3e7bc506a9335db94a9bfad53ad
+Deleted: sha256:47c0028f3689e73c2e536883afb15e2da3054b8c4f01d2cd04e60c932b38a735
+Deleted: sha256:7ee007a471f57866b6641f0d1f8494c9e114b11f1553aad4d35d6e32e46f603b
+Deleted: sha256:275ba30d63479872d06acc9cef275c30c0eac86ccc4e820250b97fba760987bd
+Deleted: sha256:ac9367676809a0efd25bf26ac0ac4d64b49fd850b54137f38dcf585c45600a43
+Deleted: sha256:270a44ab3f6f87a18df38cc664c3e3c516a4dfd86e5c73ed556a44bfc04d7281
+Deleted: sha256:d00bb5ec13b8a761b53cebbb411446cd04816fbe134148e80f03d4c5bab7a75a
+Deleted: sha256:ebb3caa66f1e96927ef67866d940abbd6df9bb13ee0016df26c0a4785d2db1b3
+Deleted: sha256:28eb2f33c89f940a6b0da53fde6f0e77095463c40240b1fe103c01cc68a4f071
+Deleted: sha256:75183133e96086d3da0b15642f02443254144b3eb9ef6a9255680fcea8954763
+Deleted: sha256:5d36a202966c7bc9be76b28a3b4e67cfdb405ec45f162bcc19ab89aa9c821b42
+Deleted: sha256:ecac95276f136396c2f1d0cae4ae9dd8bbe84316808344bac6184f0a700783d2
+Deleted: sha256:3a0cbaffdc22b212c3d817230ed4d31d5d5ab7c7f9f3d9b4d8286a33b4902f5f
+Deleted: sha256:320cbf8befed66cd3351c021562ba5339590b3b76eb08751b6416e8ad1b9c763
+Deleted: sha256:81f32871944fe7cd054008881dd71bd9a6c4302178bcb333a115dcd7e7cf26d7
+Deleted: sha256:139579c9e5353986ddc82780590ee6a76e05c0cd5c245bc2cdf8dfd8e2f63219
+Deleted: sha256:29f4f9e256c85633b59dca2af85bb8a107810ea688c727f71c2ab3973548d431
+Deleted: sha256:e380d2626d3c20647c5a8db88faccd8964190ca399e868018b563ae77da07781
+Deleted: sha256:b30515a6bd14c4014c8377bc10b84eea2846c0feee0bf8a6905936c6aea15d40
+Deleted: sha256:95c2667f762b4f7b50bb8802b1ca09de21241282d5c1d5c9e61f77a4a5fcd3fc
+Deleted: sha256:81ee31b187bf3a40c5e89d1d3b3e3a45fe55991c233ea03626180f98b92f7292
+Deleted: sha256:114dbda2161b3c807dfe88abc4f7878da7889c4641923def6f16dc9fffd0c2c8
+Deleted: sha256:3dff0ed988c96e913650a5af93e279710b32db6921096aefb90f7af99fc827dd
+Deleted: sha256:8eea42f400a6dc5c001f122cebae577e604e6c7d27eea11b057cc58dc32964ab
+Deleted: sha256:6c08ee5ec34fcb414786684599a7c3be2b675dfe57d902866ea93b43ccc54c0a
+Deleted: sha256:6871540dc98f41985f4a731a6167d17d271be3665c0ba088ba2a5f9464ada591
+Untagged: dockerinternal.azurecr.io/sshserver@sha256:d8d77a8e667b4f70eeb9ea6c84c721c6abc9060f021d9d6cf4d5b5ea7d7f6c39
+Deleted: sha256:84ea01767804f73e24adf8a9a97ca9bdc9ef97041b7e7c398fd85080e263ff75
+Deleted: sha256:ca1cf704a47618bb421d44a693d8f9a1822ef4dbf5b508b60340bf8ad2f3567b
+Deleted: sha256:c9642924395b220fb2b466b0a5a515e65ebd2dc282c53a420b663202a305e68a
+Untagged: dockerinternal.azurecr.io/sshserver@sha256:1f825769915a5e99f492f8f02ee4b850be640e837e6074cac8c2061e3259cce0
+Deleted: sha256:61a78e573fa9e60bfac707fec165c13649009d75372dfb20797389c296bd5300
+Untagged: dockerinternal.azurecr.io/sshserver@sha256:19db1122727e14a87ac9f3bdeffc987d4d68fcb4e3e5d697748b45073d26529a
+Deleted: sha256:e335c98452aff264a9ba75a57b3e11a8a2a058d4e728495eab8027f76c66a622
+Deleted: sha256:2fe3c8ddb77de3b87b8c320878a8d9725a7034c9a72d93cac0e07a876696a473
+Deleted: sha256:6d011286f6584e8a0935063fc60c7a842135b5f19c242c36b6a43ca2c55f8536
+Untagged: dockerinternal.azurecr.io/sshserver@sha256:c14d330af98117d36a7c581af5a25ddb724227caf278e46db39ce8f1a4b5a4aa
+Deleted: sha256:da49c75b50fe1dcfb92474731f22ed3b9fdd7c2bd185c4b34e947ead1eebe092
+Untagged: dockerinternal.azurecr.io/sshserver@sha256:239b79afc581d9ba3272e2b484cc337177d7cc22dcade054c3fa7017a74cf635
+Deleted: sha256:07087262532e30edd4630b43d48aa20a0fe9ecaaa8191bcf53007616d62bc88a
+Deleted: sha256:0341e14711947d4221d9dc51e534fa9397d087d7b45fe047ced185df6dbbb1d1
+Untagged: dockerinternal.azurecr.io/sshserver@sha256:fd6659ffe0bd79cd6feaf358042c37212554ebdf908e5301a30692254a181d44
+Deleted: sha256:b3a682e314005706f2e843b15d0c08c7da2c5cd3065063fd30e2da41361f7ed9
+Deleted: sha256:cf1bee7799f8f67ac96897bc887bf79248087875dae97411942b80cf0dde4c9d
+Deleted: sha256:eb27da8cb67978861858b6946f4cc29752b368405573679241a9d9837f2e6f1a
+Deleted: sha256:71639e8c808efd2ebd29b52f9a6a03a6eed6e5ff52c834092547305bf039438b
+Deleted: sha256:46d631cde84e0e2191a00c4832d551929e4d6b5fede247feff84ddf16b4d9be8
+Deleted: sha256:c8295c0d04bd639d00d14e4f4a8e5583ec72c5c2c681d067750a3cae2abe73cd
+Deleted: sha256:b1d935bdba656f10639b73a296fe60887ddb808502ad59ef0ab2997d2c098ab7
+Deleted: sha256:89f8373675ef7056a9d4e5ee067e3278f7019465b006a8fd22f4cdf5680aae77
+Deleted: sha256:ab95b82979f16c38267f5a341b35b366345bcf20ef15b536c39dee8393edf1ef
+Deleted: sha256:bf303492333d1957d37647c2f7ababa8d2bab9a880ebf736803b497cde9cdf9f
+Deleted: sha256:bace30a43105d37f945cfd0db7c449e68acc2f1a9ff5fb95711fd446f547e7e1
+Deleted: sha256:af26ff8b76c9e5859ceba6e62823f5082c410c899ea55b456c4bf346bfd209ef
+Deleted: sha256:c1fce5ad9fcef1931fe248b1ee8d7d7b8bec13f269da6d8b69998ae52a6c9c27
+Deleted: sha256:0ef2ccc084c677f9bebdb46323082d6de7a77411880bc3752823bfe12f632ead
+Deleted: sha256:1b4950db392356cd16b15eab4dc9c2dc076df15e6cc32d7829ec2b3f4bef3132
+Deleted: sha256:843eba78d195c05e84571934cbcf216b45429a68b0f77373a532bfb62c38c231
+Deleted: sha256:a0dc36833a5239b80cdf224415ccfb6970fbea7c48ab99eada971563c80cc1cd
+Deleted: sha256:803bafc27bc41d8d27c436a9c0411db4c5cca69c869fd7191857430bd5271ce4
+Deleted: sha256:a7e0c3c37c5f07953c78a69f8de9ff8b333be6a08ddba09090565bf52ce38d20
+Deleted: sha256:a49a779406a5fbf946e5b1a7cb269bf80785bbba33d141a76e72195bac44d577
+Deleted: sha256:f6e4dafa035eb436d120b3cfeccb8cd2825212679cc377896f5ea42ede16afc2
+Untagged: dockerinternal.azurecr.io/airflow_vscode_dev_env:latest
+Untagged: dockerinternal.azurecr.io/airflow_vscode_dev_env@sha256:db56218758636616212e9a19c8ac8d5f58508032cc8258e07b77a6dbec2b3813
+Deleted: sha256:5950c235240ab983cada202a233b9f3f110a2d538d9a8fe678045469f8376422
+Deleted: sha256:1502ca518d71d5849692006be7c4ad241d7664d0ab5b875cf5b5ee41d1d54551
+Deleted: sha256:d4adf27727178b15857dad4066f0202a6c1c989f9725e10942c8de27d7c43cbd
+Deleted: sha256:b66ebec32741b3a94e8d7f245ac88cde3dd990f847ca9d595d3e7e46773bd727
+Deleted: sha256:cc30f516cc5bd2c99c13dd116eb406b4ad843458d1e11136704769e2d7b79b7a
+Deleted: sha256:5fa271c746af523702c382a4dcd365b079b1f803d917374f4d47eb9c161e6dbf
+Deleted: sha256:598327535c5d11c7014a6be0da2b6e46671f8a8058f86f1f4d0923be8508d2c3
+Deleted: sha256:551ba750a8acf4e7e7ad855fdf772473ba36f51a09339f0f3638b679804ec9c8
+Deleted: sha256:0fe507b30d435fb2bca1d415184ad0d6c9daf1c9bc382914248c9593e6ae8ff0
+Deleted: sha256:d8a33133e477d367977987129313d9072e0ec80894ed4c52c2d88186f354c29a
+Untagged: ubuntu:16.04
+Untagged: ubuntu@sha256:6239ca16d54d8edd38788aacde7c6426e5999ffbbd7e97ac3cf04d474341d079
+Deleted: sha256:657d80a6401dd332f0ba86438f3b10270b4bfb082fe26986ce82062bc2527b49
+Deleted: sha256:c1d1d9da605b9e8df0daa35dfb5ddef3ea2b452574137fbb425f43bee509568c
+Deleted: sha256:60db3f0c5d2057f1ca71270cc137c60313f74ae466a7765e12b6a88ba82023fc
+Deleted: sha256:d912b5e4480d3517f2ef887b11aa5cd0cc29c5671423ade238d8540c139cb98e
+Deleted: sha256:ea69392465ad72ace1216ca2f49a372c7d6f10ec031ab53a94a17699c9ab4185
+Untagged: outcoldman/splunk:latest
+Untagged: outcoldman/splunk@sha256:99cff54a237f37352d1d7ced7ed95662d7500839262b320a44d359c6b69a687c
+Deleted: sha256:0d73e7276b503cc3dc004040a9ad89f36335ec74673b0527ce6d12706c867757
+Deleted: sha256:74987b448777add3a10ca28b08fc947ce19ad78ef0d822ca9c68c5320804bd78
+Deleted: sha256:1eb42d5bae3cc0bbcff1713ccc35a48e051feb4ac304889cd698cd1a83845879
+Deleted: sha256:04cabd9791229638720c6c3ec9d9a883b98729967ed24d88ada55810394ded25
+Deleted: sha256:20052e065d01b31e06414b6e86d91834da04f216ae24f21b1637c8980425743f
+Deleted: sha256:60e6dfc435807c401ee5ab8250a0b7c108063a6af8f490d8eb1923947ff801ee
+Deleted: sha256:d89452becb8968e7981dabc7f98aa50cf966ecbbf6ea0dbd38efbd462ababb66
+Deleted: sha256:9e63c5bce4585dd7038d830a1f1f4e44cb1a1515b00e620ac718e934b484c938
+Untagged: outcoldman/splunk:6.2-light
+Untagged: outcoldman/splunk@sha256:d41420134fa8d3c639f7be09916b334a36590a8d497c98faf8bd4452e55a077a
+Deleted: sha256:84dee8577463bf83fe6724320297caed24504c3b281848aa7c56bb36a33fe028
+Deleted: sha256:e3a877e3896cbeea613fc513d56ea7ac6b0a0ec203dde2664a8d3a039b818448
+Deleted: sha256:c6d351398e014e3a9251d1728e789893c957282b1ff7944474322cb2e1742592
+Deleted: sha256:6bef37b248bb53b063fec9415ff417cdaa3b35f41f97fc9e5a8a7188d9008649
+Deleted: sha256:2dccdd9b81275ee814cbb22410b404b5032df1057e0629a574c24792b8e8856a
+Deleted: sha256:d23299100c4fb08d15167333a1bc0ad5d34aef4e7ee298fac10a34c3ab7290c2
+Deleted: sha256:58cd6d2faf82a5c0f88063526d34ec70c56bf8da3f0757d665bd2985ccd388de
+Deleted: sha256:2d0ba9fd9bffb142764c1de9a50169eba1ddd9ce9a77e25353ec035317e25ad9
+Deleted: sha256:11f6077d96a01e0e9e09c2de205480fa4505e62bcbaf35abb24eabfb604d834e
+Deleted: sha256:14d8a514ee2b447cb26b88a3fa0dd697c42a2026407546c49c8c456441b37cd6
+Deleted: sha256:4706417442133e656592bb0b3ac1460c6f35a62a7c4abbbe93258377af3c7441
+Error response from daemon: conflict: unable to delete 063358856105 (cannot be forced) - image has dependent child images
+Error: No such image: 500e488935da
+Error: No such image: 47c0028f3689
+Error: No such image: 275ba30d6347
+Error response from daemon: conflict: unable to delete 28eb2f33c89f (cannot be forced) - image has dependent child images
+Error response from daemon: conflict: unable to delete d00bb5ec13b8 (cannot be forced) - image has dependent child images
+Error: No such image: 320cbf8befed
+Error: No such image: ecac95276f13
+Error response from daemon: conflict: unable to delete b30515a6bd14 (cannot be forced) - image has dependent child images
+Error: No such image: 29f4f9e256c8
+Error: No such image: 81ee31b187bf
+Error: No such image: 8eea42f400a6
+Error: No such image: 114dbda2161b
+Error: No such image: 6c08ee5ec34f
+Error: No such image: ab95b82979f1
+Error: No such image: 89f8373675ef
+Error: No such image: bace30a43105
+Error: No such image: af26ff8b76c9
+Error: No such image: 0ef2ccc084c6
+Error: No such image: 843eba78d195
+Error: No such image: 803bafc27bc4
+Error: No such image: a49a779406a5
+root@LinuxVM-0:~# docker run -dit --name my-running-app -p 8080:80 httpd
+Unable to find image 'httpd:latest' locally
+latest: Pulling from library/httpd
+8ec398bc0356: Downloading [===========>                                       ]  6.138MB/27.09MB
+8ec398bc0356: Pull complete
+354e6904d655: Pull complete
+27298e4c749a: Pull complete
+10e27104ba69: Pull complete
+36412f6b2f6e: Pull complete
+Digest: sha256:769018135ba22d3a7a2b91cb89b8de711562cdf51ad6621b2b9b13e95f3798de
+Status: Downloaded newer image for httpd:latest
+0bc880d7e65108060f47b8d79bb6b9d0b4a09b1bd22dda6edce8c428ec6e4bac
+root@LinuxVM-0:~#
+(reverse-i-search)`ps ': docker stop $(docker ps -a -q);docker rm $(docker ^C -a -q)
+root@LinuxVM-0:~# docker ps
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS              PORTS                  NAMES
+0bc880d7e651        httpd               "httpd-foreground"   12 seconds ago      Up 10 seconds       0.0.0.0:8080->80/tcp   my-running-app
+root@LinuxVM-0:~# docker stop $(docker ps -a -q);docker rm $(docker ps -a -q)
+0bc880d7e651
+0bc880d7e651
+root@LinuxVM-0:~#
+root@LinuxVM-0:~#
+root@LinuxVM-0:~#
+root@LinuxVM-0:~#
+root@LinuxVM-0:~# logout
+Connection to 192.168.0.180 closed.
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$
+cloudsa@smyakam-190621:/mnt/c/Users/smyakam/Documents$ ssh root@192.168.0.180
+copy key to host? : n
+skipping ssh-key copy
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-45-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sat Jan 18 21:39:27 PST 2020
+
+  System load:  0.03               Processes:              105
+  Usage of /:   12.8% of 30.45GB   Users logged in:        0
+  Memory usage: 76%                IP address for eth0:    192.168.0.180
+  Swap usage:   0%                 IP address for docker0: 172.17.0.1
+
+ * Kata Containers are now fully integrated in Charmed Kubernetes 1.16!
+   Yes, charms take the Krazy out of K8s Kata Kluster Konstruction.
+
+     https://ubuntu.com/kubernetes/docs/release-notes
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+203 packages can be updated.
+100 updates are security updates.
+
+
+Last login: Sat Jan 18 21:32:41 2020 from 192.168.0.138
+root@LinuxVM-0:~#
+root@LinuxVM-0:~#
+root@LinuxVM-0:~#
+root@LinuxVM-0:~#
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+root@LinuxVM-0:~# docker pull httpd
+Using default tag: latest
+latest: Pulling from library/httpd
+Digest: sha256:769018135ba22d3a7a2b91cb89b8de711562cdf51ad6621b2b9b13e95f379                                                                                8de
+Status: Image is up to date for httpd:latest
+docker.io/library/httpd:latest
+root@LinuxVM-0:~# docker rmi $(docker images -a -q ) --force
+Untagged: httpd:latest
+Untagged: httpd@sha256:769018135ba22d3a7a2b91cb89b8de711562cdf51ad6621b2b9b1                                                                                3e95f3798de
+Deleted: sha256:c2aa7e16edd855da8827aa0ccf976d1d50f0827c08622c16e0750aa15917                                                                                17e5
+Deleted: sha256:9fa170034369c33a4c541b38ba11c63c317f308799a46e55da9bea5f9c37                                                                                8643
+Deleted: sha256:9a41b3deb4609bec368902692dec63e858e6cd85a1312ee1931d421f51b2                                                                                a07c
+Deleted: sha256:ed10451b31dfca751aa8d3e4264cb08ead23d4f2b661324eca5ec72b0e7c                                                                                59fa
+Deleted: sha256:06020df9067f8f2547f53867de8e489fed315d964c9f17990c3e5e6a2983                                                                                8d98
+Deleted: sha256:556c5fb0d91b726083a8ce42e2faaed99f11bc68d3f70e2c7bbce87e7e0b                                                                                3e10
+root@LinuxVM-0:~#
+root@LinuxVM-0:~# docker pull httpd
+Using default tag: latest
+latest: Pulling from library/httpd
+8ec398bc0356: Pull complete
+354e6904d655: Pull complete
+27298e4c749a: Pull complete
+10e27104ba69: Pull complete
+36412f6b2f6e: Pull complete
+Digest: sha256:769018135ba22d3a7a2b91cb89b8de711562cdf51ad6621b2b9b13e95f379                                                                                8de
+Status: Downloaded newer image for httpd:latest
+docker.io/library/httpd:latest
+root@LinuxVM-0:~# docker rmi $(docker images -a -q ) --force
+Untagged: httpd:latest
+Untagged: httpd@sha256:769018135ba22d3a7a2b91cb89b8de711562cdf51ad6621b2b9b1                                                                                3e95f3798de
+Deleted: sha256:c2aa7e16edd855da8827aa0ccf976d1d50f0827c08622c16e0750aa15917                                                                                17e5
+Deleted: sha256:9fa170034369c33a4c541b38ba11c63c317f308799a46e55da9bea5f9c37                                                                                8643
+Deleted: sha256:9a41b3deb4609bec368902692dec63e858e6cd85a1312ee1931d421f51b2                                                                                a07c
+Deleted: sha256:ed10451b31dfca751aa8d3e4264cb08ead23d4f2b661324eca5ec72b0e7c                                                                                59fa
+Deleted: sha256:06020df9067f8f2547f53867de8e489fed315d964c9f17990c3e5e6a2983                                                                                8d98
+Deleted: sha256:556c5fb0d91b726083a8ce42e2faaed99f11bc68d3f70e2c7bbce87e7e0b                                                                                3e10
+root@LinuxVM-0:~# docker pull httpd
+Using default tag: latest
+latest: Pulling from library/httpd
+8ec398bc0356: Pull complete
+354e6904d655: Pull complete
+27298e4c749a: Pull complete
+10e27104ba69: Pull complete
+36412f6b2f6e: Pull complete
+Digest: sha256:769018135ba22d3a7a2b91cb89b8de711562cdf51ad6621b2b9b13e95f379                                                                                8de
+Status: Downloaded newer image for httpd:latest
+docker.io/library/httpd:latest
+root@LinuxVM-0:~#
+root@LinuxVM-0:~# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED                                                                                             SIZE
+httpd               latest              c2aa7e16edd8        3 weeks ago                                                                                         165MB
+root@LinuxVM-0:~#
+root@LinuxVM-0:~# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+httpd               latest              c2aa7e16edd8        3 weeks ago         165MB
+root@LinuxVM-0:~# docker run -net=host httpd
+unknown shorthand flag: 'n' in -net=host
+See 'docker run --help'.
+root@LinuxVM-0:~# docker run -net host httpd
+unknown shorthand flag: 'n' in -net
+See 'docker run --help'.
+root@LinuxVM-0:~# docker run --net=host httpd
+AH00557: httpd: apr_sockaddr_info_get() failed for LinuxVM-0
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using                                                                127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+AH00557: httpd: apr_sockaddr_info_get() failed for LinuxVM-0
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using                                                                127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+[Sun Jan 19 05:51:57.854247 2020] [mpm_event:notice] [pid 1:tid 140615924610176] AH00489: Apa                                                               che/2.4.41 (Unix) configured -- resuming normal operations
+[Sun Jan 19 05:51:57.854453 2020] [core:notice] [pid 1:tid 140615924610176] AH00094: Command                                                                line: 'httpd -D FOREGROUND'
+^C[Sun Jan 19 05:52:02.642879 2020] [mpm_event:notice] [pid 1:tid 140615924610176] AH00491: c                                                               aught SIGTERM, shutting down
+root@LinuxVM-0:~# docker run --net=host httpd
+root@LinuxVM-0:~# docker run --net=host httpd^C
+root@LinuxVM-0:~# docker stop $(docker ps -a -q);docker rm $(docker ps -a -q)
+2c4cfeeb0227
+2c4cfeeb0227
+root@LinuxVM-0:~# docker run --net=host httpd
+AH00557: httpd: apr_sockaddr_info_get() failed for LinuxVM-0
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using                                                                127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+AH00557: httpd: apr_sockaddr_info_get() failed for LinuxVM-0
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using                                                                127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+[Sun Jan 19 05:52:50.939772 2020] [mpm_event:notice] [pid 1:tid 140501078586496] AH00489: Apa                                                               che/2.4.41 (Unix) configured -- resuming normal operations
+[Sun Jan 19 05:52:50.939920 2020] [core:notice] [pid 1:tid 140501078586496] AH00094: Command                                                                line: 'httpd -D FOREGROUND'
+192.168.0.138 - - [19/Jan/2020:05:53:29 +0000] "GET / HTTP/1.1" 200 45
+192.168.0.138 - - [19/Jan/2020:05:53:30 +0000] "GET /favicon.ico HTTP/1.1" 404 196
+192.168.0.138 - - [19/Jan/2020:05:53:37 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:05:53:48 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:05:54:00 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:05:54:02 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:05:54:02 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:05:54:03 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:05:54:04 +0000] "GET / HTTP/1.1" 304 -
+[Sun Jan 19 05:54:07.969414 2020] [mpm_event:notice] [pid 1:tid 14050107858                                                                                 6496] AH00492: caught SIGWINCH, shutting down gracefully
+[Sun Jan 19 05:54:20.102361 2020] [core:warn] [pid 1:tid 140501078586496] AH00045: child                                                                     process 8 still did not exit, sending a SIGTERM
+[Sun Jan 19 05:54:22.104641 2020] [core:warn] [pid 1:tid 140501078586496] AH00045: child                                                                     process 8 still did not exit, sending a SIGTERM
+[Sun Jan 19 05:54:24.106869 2020] [core:warn] [pid 1:tid 140501078586496] AH00045: child                                                                     process 8 still did not exit, sending a SIGTERM
+[Sun Jan 19 05:54:26.109193 2020] [core:error] [pid 1:tid 140501078586496] AH00046: chil                                                                    d process 8 still did not exit, sending a SIGKILL
+root@LinuxVM-0:~# docker run --net=host httptttttt
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS                                                                                         PORTS               NAMES
+ff08201ef150        httpd               "httpd-foreground"   8 minutes ago       Exited                                                                     (0) 7 minutes ago                       compassionate_pasteur
+root@LinuxVM-0:~#
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS                     POR                                             TS               NAMES
+ff08201ef150        httpd               "httpd-foreground"   9 minutes ago       Exited (0) 7 minutes ago                                                                    compassionate_pasteur
+root@LinuxVM-0:~#
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS                     PORTS               NAMES
+ff08201ef150        httpd               "httpd-foreground"   9 minutes ago       Exited (0) 7 minutes ago                       compassionate_pasteur
+root@LinuxVM-0:~# ps -a
+   PID TTY          TIME CMD
+  5567 pts/0    00:00:00 ps
+root@LinuxVM-0:~#
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS                     PORTS               NAMES
+ff08201ef150        httpd               "httpd-foreground"   10 minutes ago      Exited (0) 8 minutes ago                       compassionate_pasteur
+root@LinuxVM-0:~# docker run -d --net=host httpd
+4809212d550e0b365803c0e525621b18cad781d52c459185943c047816fcf9a8
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS                      PORTS               NAMES
+4809212d550e        httpd               "httpd-foreground"   4 seconds ago       Up 2 seconds                                    elastic_leakey
+ff08201ef150        httpd               "httpd-foreground"   11 minutes ago      Exited (0) 10 minutes ago                       compassionate_pasteur
+root@LinuxVM-0:~# docker stop elastic_leakey
+elastic_leakey
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED              STATUS                      PORTS               NAMES
+4809212d550e        httpd               "httpd-foreground"   About a minute ago   Exited (0) 2 seconds ago                        elastic_leakey
+ff08201ef150        httpd               "httpd-foreground"   13 minutes ago       Exited (0) 11 minutes ago                       compassionate_pasteur
+root@LinuxVM-0:~# docker restart compassionate_pasteur
+compassionate_pasteur
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED              STATUS                      PORTS               NAMES
+4809212d550e        httpd               "httpd-foreground"   About a minute ago   Exited (0) 17 seconds ago                       elastic_leakey
+ff08201ef150        httpd               "httpd-foreground"   13 minutes ago       Up 1 second                                     compassionate_pasteur
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS                     PORTS               NAMES
+4809212d550e        httpd               "httpd-foreground"   4 minutes ago       Exited (0) 3 minutes ago                       elastic_leakey
+ff08201ef150        httpd               "httpd-foreground"   16 minutes ago      Up 3 minutes                                   compassionate_pasteur
+root@LinuxVM-0:~# docker run -d --net=host^Cttpd
+root@LinuxVM-0:~# ifconfig
+docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        inet6 fe80::42:15ff:fe4d:f9e2  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:15:4d:f9:e2  txqueuelen 0  (Ethernet)
+        RX packets 41  bytes 5706 (5.7 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 63  bytes 12825 (12.8 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.180  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::215:5dff:fe5c:111d  prefixlen 64  scopeid 0x20<link>
+        ether 00:15:5d:5c:11:1d  txqueuelen 1000  (Ethernet)
+        RX packets 137592  bytes 202047435 (202.0 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 35056  bytes 2400019 (2.4 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 362  bytes 33532 (33.5 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 362  bytes 33532 (33.5 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+root@LinuxVM-0:~#
+root@LinuxVM-0:~# docker run -d --^Cme=indian-server -p 90:80 httpd
+root@LinuxVM-0:~# netstat -napt|grep ssh
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1138/sshd
+tcp        0     36 192.168.0.180:22        192.168.0.138:62823     ESTABLISHED 4671/sshd: root@pts
+tcp6       0      0 :::22                   :::*                    LISTEN      1138/sshd
+root@LinuxVM-0:~# docker run -d --name=indian-server -p 90:80 httpd
+root@LinuxVM-0:~# docker run -d --name=indian-server -p 90:80 httpd
+27c4bf32eca70325a79659c6d845dff51190e0d10d7f7053a5a64a4a8a42abde
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS                      PORTS                NAMES
+27c4bf32eca7        httpd               "httpd-foreground"   18 seconds ago      Up 16 seconds               0.0.0.0:90->80/tcp   indian-server
+4809212d550e        httpd               "httpd-foreground"   16 minutes ago      Exited (0) 15 minutes ago                        elastic_leakey
+ff08201ef150        httpd               "httpd-foreground"   28 minutes ago      Up 14 minutes                                    compassionate_pasteur
+root@LinuxVM-0:~# docker logs indian-server
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+[Sun Jan 19 06:20:50.281516 2020] [mpm_event:notice] [pid 1:tid 139719012672640] AH00489: Apache/2.4.41 (Unix) configured -- resuming normal operations
+[Sun Jan 19 06:20:50.281824 2020] [core:notice] [pid 1:tid 139719012672640] AH00094: Command line: 'httpd -D FOREGROUND'
+root@LinuxVM-0:~# docker logs -f indian-server
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+[Sun Jan 19 06:20:50.281516 2020] [mpm_event:notice] [pid 1:tid 139719012672640] AH00489: Apache/2.4.41 (Unix) configured -- resuming normal operations
+[Sun Jan 19 06:20:50.281824 2020] [core:notice] [pid 1:tid 139719012672640] AH00094: Command line: 'httpd -D FOREGROUND'
+192.168.0.138 - - [19/Jan/2020:06:23:30 +0000] "GET / HTTP/1.1" 200 45
+192.168.0.138 - - [19/Jan/2020:06:23:31 +0000] "GET /favicon.ico HTTP/1.1" 4                                                                                04 196
+192.168.0.138 - - [19/Jan/2020:06:23:56 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:03 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:03 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:03 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:04 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:04 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:04 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:04 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:04 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:05 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:05 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:05 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:05 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:06 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:06 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:06 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:06 +0000] "GET / HTTP/1.1" 304 -
+192.168.0.138 - - [19/Jan/2020:06:24:06 +0000] "GET / HTTP/1.1" 304 -
+^C
+root@LinuxVM-0:~#
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS                      PORTS                NAMES
+27c4bf32eca7        httpd               "httpd-foreground"   3 minutes ago       Up 3 minutes                0.0.0.0:90->80/tcp   indian-server
+4809212d550e        httpd               "httpd-foreground"   19 minutes ago      Exited (0) 18 minutes ago                        elastic_leakey
+ff08201ef150        httpd               "httpd-foreground"   31 minutes ago      Up 18 minutes                                    compassionate_pasteur
+root@LinuxVM-0:~# docker run -d --name=indian-server-2 -p 190:80 httpd
+5372feadc640c009034ba7a7adea0371c6b9fe708f52eb37431cd0b7558d6ee8
+root@LinuxVM-0:~# docker logs -f indian-server^C
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS                      PORTS                 NAMES
+5372feadc640        httpd               "httpd-foreground"   26 seconds ago      Up 24 seconds               0.0.0.0:190->80/tcp   indian-server-2
+27c4bf32eca7        httpd               "httpd-foreground"   4 minutes ago       Up 4 minutes                0.0.0.0:90->80/tcp    indian-server
+4809212d550e        httpd               "httpd-foreground"   20 minutes ago      Exited (0) 19 minutes ago                         elastic_leakey
+ff08201ef150        httpd               "httpd-foreground"   32 minutes ago      Up 19 minutes                                     compassionate_pasteur
+root@LinuxVM-0:~# netstat -napt|grep 90
+tcp6       0      0 :::90                   :::*                    LISTEN      6070/docker-proxy
+tcp6       0      0 :::190                  :::*                    LISTEN      6325/docker-proxy
+root@LinuxVM-0:~# netstat -napt|grep 80
+tcp        0     36 192.168.0.180:22        192.168.0.138:62823     ESTABLISHED 4671/sshd: root@pts
+tcp6       0      0 :::80                   :::*                    LISTEN      5839/httpd
+root@LinuxVM-0:~#
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS                      PORTS                 NAMES
+5372feadc640        httpd               "httpd-foreground"   12 minutes ago      Up 12 minutes               0.0.0.0:190->80/tcp   indian-server-2
+27c4bf32eca7        httpd               "httpd-foreground"   16 minutes ago      Up 16 minutes               0.0.0.0:90->80/tcp    indian-server
+4809212d550e        httpd               "httpd-foreground"   32 minutes ago      Exited (0) 31 minutes ago                         elastic_leakey
+ff08201ef150        httpd               "httpd-foreground"   44 minutes ago      Up 31 minutes                                     compassionate_pasteur
+root@LinuxVM-0:~# docker inspect indian-server-2
+[
+    {
+        "Id": "5372feadc640c009034ba7a7adea0371c6b9fe708f52eb37431cd0b7558d6ee8",
+        "Created": "2020-01-19T06:24:44.648559365Z",
+        "Path": "httpd-foreground",
+        "Args": [],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 6357,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2020-01-19T06:24:45.732780596Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:c2aa7e16edd855da8827aa0ccf976d1d50f0827c08622c16e0750aa1591717e5",
+        "ResolvConfPath": "/var/lib/docker/containers/5372feadc640c009034ba7a7adea0371c6b9fe708f52eb37431cd0b7558d6ee8/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/5372feadc640c009034ba7a7adea0371c6b9fe708f52eb37431cd0b7558d6ee8/hostname",
+        "HostsPath": "/var/lib/docker/containers/5372feadc640c009034ba7a7adea0371c6b9fe708f52eb37431cd0b7558d6ee8/hosts",
+        "LogPath": "/var/lib/docker/containers/5372feadc640c009034ba7a7adea0371c6b9fe708f52eb37431cd0b7558d6ee8/5372feadc640c009034ba7a7adea0371c6b9fe708f52eb37431cd0b7558d6ee8-json.log",
+        "Name": "/indian-server-2",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "default",
+            "PortBindings": {
+                "80/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "190"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "Capabilities": null,
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "KernelMemory": 0,
+            "KernelMemoryTCP": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/1526ee64aadef61ef443618c5a14cfa6286a8919863ff06861eab1dd7b0f193e-init/diff:/var/lib/docker/overlay2/f618433db891cbd12cadeeb9cf8e340815a96140fc685d62bebcde7b03a33e62/diff:/var/lib/docker/overlay2/0c23cda22806e5ce221fa8be81002b6f435a3e44837a27e8a6b7639d5da58ef4/diff:/var/lib/docker/overlay2/b37e72c84976788a7f3ed46dbd2f26da309712afc29e05d4ba0efd939ae17597/diff:/var/lib/docker/overlay2/7d4eba6df3e0054fd4abfed31e0db5852b92de0eef6715a73cb310b86846c4bc/diff:/var/lib/docker/overlay2/ae23deecab727c1c4cce0ad19ffa52c5ddc81078e28ed29a15eb72d589905242/diff",
+                "MergedDir": "/var/lib/docker/overlay2/1526ee64aadef61ef443618c5a14cfa6286a8919863ff06861eab1dd7b0f193e/merged",
+                "UpperDir": "/var/lib/docker/overlay2/1526ee64aadef61ef443618c5a14cfa6286a8919863ff06861eab1dd7b0f193e/diff",
+                "WorkDir": "/var/lib/docker/overlay2/1526ee64aadef61ef443618c5a14cfa6286a8919863ff06861eab1dd7b0f193e/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "5372feadc640",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/apache2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "HTTPD_PREFIX=/usr/local/apache2",
+                "HTTPD_VERSION=2.4.41",
+                "HTTPD_SHA256=133d48298fe5315ae9366a0ec66282fa4040efa5d566174481077ade7d18ea40",
+                "HTTPD_PATCHES="
+            ],
+            "Cmd": [
+                "httpd-foreground"
+            ],
+            "Image": "httpd",
+            "Volumes": null,
+            "WorkingDir": "/usr/local/apache2",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {},
+            "StopSignal": "SIGWINCH"
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "be01c2b2fe946d8696f025cf0e99f60d1897a94300b9ea5aa2b691ec7a4963ed",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {
+                "80/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "190"
+                    }
+                ]
+            },
+            "SandboxKey": "/var/run/docker/netns/be01c2b2fe94",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "e0606e3547e68ed4cadc15dd201cc03c668c3db88b7ea4aab9f0af2877201afc",
+            "Gateway": "172.17.0.1",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "172.17.0.3",
+            "IPPrefixLen": 16,
+            "IPv6Gateway": "",
+            "MacAddress": "02:42:ac:11:00:03",
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "NetworkID": "c7877f7bc84a0c47b7eb8c67391ef76225d0390403ce48bee11dd0d528405b58",
+                    "EndpointID": "e0606e3547e68ed4cadc15dd201cc03c668c3db88b7ea4aab9f0af2877201afc",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.3",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:11:00:03",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS                      PORTS                 NAMES
+5372feadc640        httpd               "httpd-foreground"   16 minutes ago      Up 16 minutes               0.0.0.0:190->80/tcp   indian-server-2
+27c4bf32eca7        httpd               "httpd-foreground"   20 minutes ago      Up 20 minutes               0.0.0.0:90->80/tcp    indian-server
+4809212d550e        httpd               "httpd-foreground"   36 minutes ago      Exited (0) 35 minutes ago                         elastic_leakey
+ff08201ef150        httpd               "httpd-foreground"   48 minutes ago      Up 34 minutes                                     compassionate_pasteur
+root@LinuxVM-0:~# docker inspect compassionate_pasteur
+[
+    {
+        "Id": "ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177",
+        "Created": "2020-01-19T05:52:49.722422621Z",
+        "Path": "httpd-foreground",
+        "Args": [],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 5839,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2020-01-19T06:06:08.967442256Z",
+            "FinishedAt": "2020-01-19T05:54:27.164383381Z"
+        },
+        "Image": "sha256:c2aa7e16edd855da8827aa0ccf976d1d50f0827c08622c16e0750aa1591717e5",
+        "ResolvConfPath": "/var/lib/docker/containers/ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177/hostname",
+        "HostsPath": "/var/lib/docker/containers/ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177/hosts",
+        "LogPath": "/var/lib/docker/containers/ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177/ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177-json.log",
+        "Name": "/compassionate_pasteur",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "host",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "Capabilities": null,
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "KernelMemory": 0,
+            "KernelMemoryTCP": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/8fa50c5d7fae755606f0e1b98e4cd4603ebe87f5cf1e4ff27afc6519955c7f10-init/diff:/var/lib/docker/overlay2/f618433db891cbd12cadeeb9cf8e340815a96140fc685d62bebcde7b03a33e62/diff:/var/lib/docker/overlay2/0c23cda22806e5ce221fa8be81002b6f435a3e44837a27e8a6b7639d5da58ef4/diff:/var/lib/docker/overlay2/b37e72c84976788a7f3ed46dbd2f26da309712afc29e05d4ba0efd939ae17597/diff:/var/lib/docker/overlay2/7d4eba6df3e0054fd4abfed31e0db5852b92de0eef6715a73cb310b86846c4bc/diff:/var/lib/docker/overlay2/ae23deecab727c1c4cce0ad19ffa52c5ddc81078e28ed29a15eb72d589905242/diff",
+                "MergedDir": "/var/lib/docker/overlay2/8fa50c5d7fae755606f0e1b98e4cd4603ebe87f5cf1e4ff27afc6519955c7f10/merged",
+                "UpperDir": "/var/lib/docker/overlay2/8fa50c5d7fae755606f0e1b98e4cd4603ebe87f5cf1e4ff27afc6519955c7f10/diff",
+                "WorkDir": "/var/lib/docker/overlay2/8fa50c5d7fae755606f0e1b98e4cd4603ebe87f5cf1e4ff27afc6519955c7f10/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "LinuxVM-0",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/apache2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "HTTPD_PREFIX=/usr/local/apache2",
+                "HTTPD_VERSION=2.4.41",
+                "HTTPD_SHA256=133d48298fe5315ae9366a0ec66282fa4040efa5d566174481077ade7d18ea40",
+                "HTTPD_PATCHES="
+            ],
+            "Cmd": [
+                "httpd-foreground"
+            ],
+            "Image": "httpd",
+            "Volumes": null,
+            "WorkingDir": "/usr/local/apache2",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {},
+            "StopSignal": "SIGWINCH"
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "0d78e2dfa7eb40ba67d75a4fe8872c445fbe6cf5098da8280d0313730fa466f8",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {},
+            "SandboxKey": "/var/run/docker/netns/default",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "host": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "NetworkID": "ef4f53e8920bba7857a71faae58ba6eb01aea6be5c5018507bcc6ac3359bf747",
+                    "EndpointID": "a7c4f18bd1bc8d46ef57c31f5acdf00abd5cc6b0c13ce691027bd8f47674ba90",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS                      PORTS                 NAMES
+5372feadc640        httpd               "httpd-foreground"   16 minutes ago      Up 16 minutes               0.0.0.0:190->80/tcp   indian-server-2
+27c4bf32eca7        httpd               "httpd-foreground"   20 minutes ago      Up 20 minutes               0.0.0.0:90->80/tcp    indian-server
+4809212d550e        httpd               "httpd-foreground"   36 minutes ago      Exited (0) 35 minutes ago                         elastic_leakey
+ff08201ef150        httpd               "httpd-foreground"   48 minutes ago      Up 35 minutes                                     compassionate_pasteur
+root@LinuxVM-0:~# docker start  elastic_leakey
+elastic_leakey
+root@LinuxVM-0:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS                    PORTS                 NAMES
+5372feadc640        httpd               "httpd-foreground"   17 minutes ago      Up 17 minutes             0.0.0.0:190->80/tcp   indian-server-2
+27c4bf32eca7        httpd               "httpd-foreground"   21 minutes ago      Up 21 minutes             0.0.0.0:90->80/tcp    indian-server
+4809212d550e        httpd               "httpd-foreground"   37 minutes ago      Exited (1) 1 second ago                         elastic_leakey
+ff08201ef150        httpd               "httpd-foreground"   49 minutes ago      Up 36 minutes                                   compassionate_pasteur
+root@LinuxVM-0:~# docker logs elastic_leakey
+AH00557: httpd: apr_sockaddr_info_get() failed for LinuxVM-0
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+AH00557: httpd: apr_sockaddr_info_get() failed for LinuxVM-0
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+[Sun Jan 19 06:04:41.509593 2020] [mpm_event:notice] [pid 1:tid 139872601535616] AH00489: Apache/2.4.41 (Unix) configured -- resuming normal operations
+[Sun Jan 19 06:04:41.525399 2020] [core:notice] [pid 1:tid 139872601535616] AH00094: Command line: 'httpd -D FOREGROUND'
+192.168.0.138 - - [19/Jan/2020:06:05:17 +0000] "GET / HTTP/1.1" 304 -
+[Sun Jan 19 06:05:52.231027 2020] [mpm_event:notice] [pid 1:tid 139872601535616] AH00492: caught SIGWINCH, shutting down gracefully
+AH00557: httpd: apr_sockaddr_info_get() failed for LinuxVM-0
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+(98)Address already in use: AH00072: make_sock: could not bind to address [::]:80
+(98)Address already in use: AH00072: make_sock: could not bind to address 0.0.0.0:80
+no listening sockets available, shutting down
+AH00015: Unable to open logs
+root@LinuxVM-0:~#
+root@LinuxVM-0:~# docker logs --help
+
+Usage:  docker logs [OPTIONS] CONTAINER
+
+Fetch the logs of a container
+
+Options:
+      --details        Show extra details provided to logs
+  -f, --follow         Follow log output
+      --since string   Show logs since timestamp (e.g. 2013-01-02T13:23:37) or relative (e.g. 42m for 42 minutes)
+      --tail string    Number of lines to show from the end of the logs (default "all")
+  -t, --timestamps     Show timestamps
+      --until string   Show logs before a timestamp (e.g. 2013-01-02T13:23:37) or relative (e.g. 42m for 42 minutes)
+root@LinuxVM-0:~# docker logs elastic_leakey
+AH00557: httpd: apr_sockaddr_info_get() failed for LinuxVM-0
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+AH00557: httpd: apr_sockaddr_info_get() failed for LinuxVM-0
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+[Sun Jan 19 06:04:41.509593 2020] [mpm_event:notice] [pid 1:tid 139872601535616] AH00489: Apache/2.4.41 (Unix) configured -- resuming normal operations
+[Sun Jan 19 06:04:41.525399 2020] [core:notice] [pid 1:tid 139872601535616] AH00094: Command line: 'httpd -D FOREGROUND'
+192.168.0.138 - - [19/Jan/2020:06:05:17 +0000] "GET / HTTP/1.1" 304 -
+[Sun Jan 19 06:05:52.231027 2020] [mpm_event:notice] [pid 1:tid 139872601535616] AH00492: caught SIGWINCH, shutting down gracefully
+AH00557: httpd: apr_sockaddr_info_get() failed for LinuxVM-0
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+(98)Address already in use: AH00072: make_sock: could not bind to address [::]:80
+(98)Address already in use: AH00072: make_sock: could not bind to address 0.0.0.0:80
+no listening sockets available, shutting down
+AH00015: Unable to open logs
+root@LinuxVM-0:~# docker inspect compassionate_pasteur
+[
+    {
+        "Id": "ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177",
+        "Created": "2020-01-19T05:52:49.722422621Z",
+        "Path": "httpd-foreground",
+        "Args": [],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 5839,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2020-01-19T06:06:08.967442256Z",
+            "FinishedAt": "2020-01-19T05:54:27.164383381Z"
+        },
+        "Image": "sha256:c2aa7e16edd855da8827aa0ccf976d1d50f0827c08622c16e0750aa1591717e5",
+        "ResolvConfPath": "/var/lib/docker/containers/ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177/hostname",
+        "HostsPath": "/var/lib/docker/containers/ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177/hosts",
+        "LogPath": "/var/lib/docker/containers/ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177/ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177-json.log",
+        "Name": "/compassionate_pasteur",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "host",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "Capabilities": null,
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "KernelMemory": 0,
+            "KernelMemoryTCP": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/8fa50c5d7fae755606f0e1b98e4cd4603ebe87f5cf1e4ff27afc6519955c7f10-init/diff:/var/lib/docker/overlay2/f618433db891cbd12cadeeb9cf8e340815a96140fc685d62bebcde7b03a33e62/diff:/var/lib/docker/overlay2/0c23cda22806e5ce221fa8be81002b6f435a3e44837a27e8a6b7639d5da58ef4/diff:/var/lib/docker/overlay2/b37e72c84976788a7f3ed46dbd2f26da309712afc29e05d4ba0efd939ae17597/diff:/var/lib/docker/overlay2/7d4eba6df3e0054fd4abfed31e0db5852b92de0eef6715a73cb310b86846c4bc/diff:/var/lib/docker/overlay2/ae23deecab727c1c4cce0ad19ffa52c5ddc81078e28ed29a15eb72d589905242/diff",
+                "MergedDir": "/var/lib/docker/overlay2/8fa50c5d7fae755606f0e1b98e4cd4603ebe87f5cf1e4ff27afc6519955c7f10/merged",
+                "UpperDir": "/var/lib/docker/overlay2/8fa50c5d7fae755606f0e1b98e4cd4603ebe87f5cf1e4ff27afc6519955c7f10/diff",
+                "WorkDir": "/var/lib/docker/overlay2/8fa50c5d7fae755606f0e1b98e4cd4603ebe87f5cf1e4ff27afc6519955c7f10/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "LinuxVM-0",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/apache2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "HTTPD_PREFIX=/usr/local/apache2",
+                "HTTPD_VERSION=2.4.41",
+                "HTTPD_SHA256=133d48298fe5315ae9366a0ec66282fa4040efa5d566174481077ade7d18ea40",
+                "HTTPD_PATCHES="
+            ],
+            "Cmd": [
+                "httpd-foreground"
+            ],
+            "Image": "httpd",
+            "Volumes": null,
+            "WorkingDir": "/usr/local/apache2",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {},
+            "StopSignal": "SIGWINCH"
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "0d78e2dfa7eb40ba67d75a4fe8872c445fbe6cf5098da8280d0313730fa466f8",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {},
+            "SandboxKey": "/var/run/docker/netns/default",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "host": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "NetworkID": "ef4f53e8920bba7857a71faae58ba6eb01aea6be5c5018507bcc6ac3359bf747",
+                    "EndpointID": "a7c4f18bd1bc8d46ef57c31f5acdf00abd5cc6b0c13ce691027bd8f47674ba90",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]
+root@LinuxVM-0:~# docker inspect compassionate_pasteur|grep 80
+                "LowerDir": "/var/lib/docker/overlay2/8fa50c5d7fae755606f0e1b98e4cd4603ebe87f5cf1e4ff27afc6519955c7f10-init/diff:/var/lib/docker/overlay2/f618433db891cbd12cadeeb9cf8e340815a96140fc685d62bebcde7b03a33e62/diff:/var/lib/docker/overlay2/0c23cda22806e5ce221fa8be81002b6f435a3e44837a27e8a6b7639d5da58ef4/diff:/var/lib/docker/overlay2/b37e72c84976788a7f3ed46dbd2f26da309712afc29e05d4ba0efd939ae17597/diff:/var/lib/docker/overlay2/7d4eba6df3e0054fd4abfed31e0db5852b92de0eef6715a73cb310b86846c4bc/diff:/var/lib/docker/overlay2/ae23deecab727c1c4cce0ad19ffa52c5ddc81078e28ed29a15eb72d589905242/diff",
+                "80/tcp": {}
+            "SandboxID": "0d78e2dfa7eb40ba67d75a4fe8872c445fbe6cf5098da8280d0313730fa466f8",
+root@LinuxVM-0:~# docker logs --help
+
+Usage:  docker logs [OPTIONS] CONTAINER
+
+Fetch the logs of a container
+
+Options:
+      --details        Show extra details provided to logs
+  -f, --follow         Follow log output
+      --since string   Show logs since timestamp (e.g. 2013-01-02T13:23:37) or relative (e.g. 42m for 42 minutes)
+      --tail string    Number of lines to show from the end of the logs (default "all")
+  -t, --timestamps     Show timestamps
+      --until string   Show logs before a timestamp (e.g. 2013-01-02T13:23:37) or relative (e.g. 42m for 42 minutes)
+root@LinuxVM-0:~#
+root@LinuxVM-0:~#
+root@LinuxVM-0:~# tail "/var/lib/docker/containers/ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177/ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177-json.log"
+{"log":"AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message\n","stream":"stderr","time":"2020-01-19T06:06:09.596379869Z"}
+{"log":"AH00557: httpd: apr_sockaddr_info_get() failed for LinuxVM-0\n","stream":"stderr","time":"2020-01-19T06:06:09.827712307Z"}
+{"log":"AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message\n","stream":"stderr","time":"2020-01-19T06:06:09.827735808Z"}
+{"log":"[Sun Jan 19 06:06:09.829613 2020] [mpm_event:notice] [pid 1:tid 139791123948672] AH00489: Apache/2.4.41 (Unix) configured -- resuming normal operations\n","stream":"stderr","time":"2020-01-19T06:06:09.83130554Z"}
+{"log":"[Sun Jan 19 06:06:09.830133 2020] [core:notice] [pid 1:tid 139791123948672] AH00094: Command line: 'httpd -D FOREGROUND'\n","stream":"stderr","time":"2020-01-19T06:06:09.832500584Z"}
+{"log":"192.168.0.138 - - [19/Jan/2020:06:06:17 +0000] \"GET / HTTP/1.1\" 304 -\n","stream":"stdout","time":"2020-01-19T06:06:17.13857957Z"}
+{"log":"192.168.0.138 - - [19/Jan/2020:06:06:18 +0000] \"GET / HTTP/1.1\" 304 -\n","stream":"stdout","time":"2020-01-19T06:06:18.691609903Z"}
+{"log":"192.168.0.138 - - [19/Jan/2020:06:23:42 +0000] \"GET / HTTP/1.1\" 304 -\n","stream":"stdout","time":"2020-01-19T06:23:42.527738448Z"}
+{"log":"192.168.0.138 - - [19/Jan/2020:06:25:32 +0000] \"GET / HTTP/1.1\" 304 -\n","stream":"stdout","time":"2020-01-19T06:25:32.597455806Z"}
+{"log":"192.168.0.138 - - [19/Jan/2020:06:26:24 +0000] \"-\" 408 -\n","stream":"stdout","time":"2020-01-19T06:26:24.034501938Z"}
+root@LinuxVM-0:~# tail "/var/lib/docker/containers/ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177/ff08201ef150bff9bc219b40520bfde9b5922b7b3f893402d9fa214fe3c96177-json.log"^C
+root@LinuxVM-0:~#
+root@LinuxVM-0:~#
